@@ -1,0 +1,7 @@
+[database]
+    host = "localhost"
+    port = ""
+    user = "root"
+    password = "IPwork2019."
+    name = "unicentro" 
+    campania = "Coworking"

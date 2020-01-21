@@ -1,0 +1,28 @@
+
+.logo img {
+    margin: 10%;
+}
+
+.logo p {
+    font-size: 2rem;
+    padding: 3%;
+    text-align: center;
+    color: white;
+    background: #005153ad;
+    border-radius: 15px;
+}
+
+
+@media (min-width: 320px) and (max-width: 800px) {
+    .logo p {
+        font-size: 1rem;
+    }
+}
+
+
+/* CLASES QUE CAMBIAN  */
+
+.logo p {    
+    color: white;
+    background-color: rgb(160,19,35,0.91);  
+}

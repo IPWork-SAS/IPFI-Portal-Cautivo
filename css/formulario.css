@@ -1,0 +1,74 @@
+.formulario {
+    padding: 2%;
+    background: #005153ad;
+    border-radius: 10px;
+    color: #EEE;
+}
+
+
+.form-group {
+    margin-bottom: 0.6rem;
+}
+
+.check-terminos {
+    text-align: center;
+}
+
+a {
+    color: #EEE;
+}
+
+a:hover {
+    cursor: pointer ;
+    color: black;
+}
+
+.form-btn {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+}
+
+
+
+.input_error input {
+    background-color: rgb(251,154,154,0.73);
+}
+
+.input_error input::placeholder {
+    color: #EEE;
+}
+
+.input_error select {
+    background-color: rgb(251,154,154,0.73);
+    color: #EEE;
+}
+
+.input_error span {
+    font-size: 13px;
+}
+
+
+
+/* CLASES MODIFICABLES */
+.formulario {    
+    background: #948c8c91;
+    color: #EEE;
+}
+
+.btn-conect {
+    color: #EEE;
+    background-color: rgb(160,19,35,0.91);
+    border-color: #000000;
+}
+
+.btn-conect:hover {
+    background-color: rgb(190, 33, 50, 0.91);
+    color: #EEE;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: rgb(160,19,35,0.91);
+    background-color: rgb(160,19,35,0.91);
+}
