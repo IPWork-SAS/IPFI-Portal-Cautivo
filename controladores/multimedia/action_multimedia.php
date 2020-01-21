@@ -120,6 +120,7 @@
             $file_campania->tamano = $file->size;
             $file_campania->datos = file_get_contents($file->tmp_name);
             $file_campania->fecha_creacion = $today;
+            $file_campania->estado = true;
             $file_campania->save();
         }
 
