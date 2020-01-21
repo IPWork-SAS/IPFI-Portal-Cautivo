@@ -138,11 +138,11 @@
                 session_start();
             }           
        
-            $_SESSION['$ip_ap'] = $this->ip_ap;
-            $_SESSION['$mac_ap'] = $this->mac_ap;
-            $_SESSION['$mac_cliente'] = $this->mac_cliente;
-            $_SESSION['$ip_cliente'] = $this->ip_cliente;
-            $_SESSION['$ssid'] = $this->ssid;
+            $_SESSION['ip_ap'] = $this->ip_ap;
+            $_SESSION['mac_ap'] = $this->mac_ap;
+            $_SESSION['mac_cliente'] = $this->mac_cliente;
+            $_SESSION['ip_cliente'] = $this->ip_cliente;
+            $_SESSION['ssid'] = $this->ssid;
         }
 
         function SetParametersSZSession() {
@@ -150,16 +150,16 @@
                 session_start();
             }
 
-            $_SESSION['$ip_nbi'] = $this->ip_nbi;
-            $_SESSION['$zd_ip'] = $this->zd_ip;
-            $_SESSION['$ip_ap'] = $this->ip_ap;
-            $_SESSION['$mac_ap'] = $this->mac_ap;
-            $_SESSION['$mac_cliente'] = $this->mac_cliente;
-            $_SESSION['$ip_cliente'] = $this->ip_cliente;
-            $_SESSION['$ssid'] = $this->ssid;
-            $_SESSION['$sshTunnelStatus'] = $this->sshTunnelStatus;
-            $_SESSION['$url'] = $this->url;
-            $_SESSION['$proxy'] = $this->proxy;
+            $_SESSION['ip_nbi'] = $this->ip_nbi;
+            $_SESSION['zd_ip'] = $this->zd_ip;
+            $_SESSION['ip_ap'] = $this->ip_ap;
+            $_SESSION['mac_ap'] = $this->mac_ap;
+            $_SESSION['mac_cliente'] = $this->mac_cliente;
+            $_SESSION['ip_cliente'] = $this->ip_cliente;
+            $_SESSION['ssid'] = $this->ssid;
+            $_SESSION['sshTunnelStatus'] = $this->sshTunnelStatus;
+            $_SESSION['url'] = $this->url;
+            $_SESSION['proxy'] = $this->proxy;
         }
     }
 ?>

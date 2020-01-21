@@ -42,7 +42,7 @@
         "error_email_estructura" => "The email field contain invalid characteres or is incorrect",
         //Telefono
         "error_telefono_vacio" => "The telephone field is mandatory",
-        "error_telefono_min_longitud" => "The telephone  field must have more than 13 characters",
+        "error_telefono_min_longitud" => "The telephone  field must have more than 10 characters",
         "error_telefono_max_longitud" => "The telephone field must have less than 13 characters",
         //Edad
         "error_edad_vacio" => "The age field is mandatory",
