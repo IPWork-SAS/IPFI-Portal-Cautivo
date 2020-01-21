@@ -1,4 +1,5 @@
 <?php
+    include_once "../db/files_campania.class.php";
     session_start();
    
     if (isset($_REQUEST['i'])) {
@@ -16,6 +17,8 @@
     } else {
         $error_message = $lang['error_default'];
     }
+
+    $fileCampania = new FilesCampania();
 ?>
 
 <!DOCTYPE html>
@@ -31,6 +34,11 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/error.css">
 </head>
+<style>
+    html {
+        background-image: url(<?=$fileCampania->GetSRCBackgroundImage()?>);
+    }    
+</style>
 <body>
     <div class="selector-idioma">
         <?php if ($lang['lang'] == 'es'){ ?>
@@ -50,7 +58,7 @@
             <div class="col-sm-12 my-auto">
                 <div class="card"> 
                     <div class="logo">
-                        <img class="img-logo" src="../img/logo.png" alt="">
+                        <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC()?>" alt="">
                         <p><?=$error_message?></p>
                     </div>
                 </div>
