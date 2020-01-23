@@ -17,7 +17,7 @@
         public $dataValidation;
         public $ruckusTechology;
 
-        private $usuario = '';
+        private $username = '';
         private $password = '';
 
         function __construct() {              
