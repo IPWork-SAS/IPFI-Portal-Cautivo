@@ -176,7 +176,7 @@
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();
             }    
-            $tipo_tecnologia = $_SESSION['tipo_tecnologia'];       
+            $tipo_tecnologia = $_SESSION['tipo_tecnologia']; 
 
             switch ($tipo_tecnologia) {
                 case 'ZD':
@@ -185,13 +185,11 @@
                     $uip = $_SESSION['ip_cliente'];                                    
                     $url = 'http://'.$_SESSION['ip_ap'].':'.$port.'/SubscriberPortal/hotspotlogin';
                     return '                        
-                        <form class="field-btn-conectar" action="'.$url.'" method="POST">
+                        action="'.$url.'" method="POST">
                             <input type="hidden" name="uip" value="'.$uip.'">
                             <input type="hidden" name="client_mac" value="'.$client_mac.'">
                             <input type="hidden" name="username" value="'.$this->username.'">
                             <input type="hidden" name="password" value="'.$this->password.'">
-                            <button class="btn btn-conectar" type="submit"><?=$lang["btn_continuar"]?></button>
-                        </form>
                     ';
                     break;
                 case 'SZ':
@@ -200,16 +198,15 @@
                     $uip = $_SESSION['ip_cliente'];
                     $proxy = $_SESSION['proxy'];                    
                     $url = 'http://'.$_SESSION['zd_ip'].':'.$port.'/SubscriberPortal/hotspotlogin'; 
-                    return '                        
-                        <form class="field-btn-conectar" action="'.$url.'" method="POST">
+                    echo ' 
+                        action="'.$url.'" method="POST">
                             <input type="hidden" name="proxy" value="'.$proxy.'">
                             <input type="hidden" name="uip" value="'.$uip.'">
                             <input type="hidden" name="client_mac" value="'.$client_mac.'">
                             <input type="hidden" name="username" value="'.$this->username.'">
-                            <input type="hidden" name="password" value="'.$this->password.'">
-                            <button class="btn btn-conectar" type="submit"><?=$lang["btn_continuar"]?></button>
-                        </form>
+                            <input type="hidden" name="password" value="'.$this->password.'">                            
                     ';
+                    exit;
                     break;
                 default:
                     return '';

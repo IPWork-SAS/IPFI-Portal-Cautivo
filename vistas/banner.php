@@ -17,7 +17,7 @@
 
     include_once("../lang/{$lang}.php"); 
 
-    $conexion = new Conexion();
+    $conexion = new Conexion($lang['btn_continuar']);
     
     if(isset($_SESSION['mac_cliente'])) {
         $campania = new Campania();
@@ -98,9 +98,14 @@
                             ?>
                         </div>
                     </div>
+
+                    
                     <?php 
-                        //Form de conexion
-                        echo $conexion->form_connection;
+                        echo '
+                            <form class="field-btn-conectar"'.$conexion->form_connection.'
+                                <button class="btn btn-conectar" type="submit">'.$lang['bienvenido_usuario'].'</button>
+                            </form>
+                        ';
                    ?>
                 </div>
             </div>
