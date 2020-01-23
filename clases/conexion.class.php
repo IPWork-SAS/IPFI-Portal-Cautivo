@@ -1,8 +1,8 @@
 <?php 
-   
+    include_once '../clases/ruckus.class.php';
+
     class Conexion {
-        public $form_connection;
-        private $tecnologia;
+        public $form_connection;        
 
         function __construct()
         {
@@ -32,6 +32,7 @@
 
         function BuildFormRuckus() {
             $ruckus = new Ruckus();
+            $this->form_connection = $ruckus->GetFormConnection();
         }
     }
 ?>
