@@ -125,9 +125,9 @@
         }
 
         public function GetIdCampania() {
-            $campania = $this::sql("SELECT* FROM campania where campania = ':table'");
+            $campania = $this::sql("SELECT* FROM campania where campania = ':table'", Orm::FETCH_ONE);
             if(isset($campania)) {
-                return $campania;
+                return $campania->id;
             } else {
                 return '0';
             }

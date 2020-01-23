@@ -17,6 +17,7 @@
     
     $campania = new Campania();
     $datosCampania = $campania->GetDatosCampaña();  
+    $id_campania = $campania->GetIdCampania();
     
     $fileCampania = new FilesCampania(); 
 ?>
@@ -40,7 +41,7 @@
 </head>
 <style>
     html {
-        background-image: url(<?=$fileCampania->GetSRCBackgroundImage()?>);
+        background-image: url(<?=$fileCampania->GetSRCBackgroundImage($id_campania)?>);
     }    
 </style>
 <body>
@@ -64,7 +65,7 @@
             <div class="col-sm-12 my-auto">
                 <div class="card"> 
                     <div class="logo">                        
-                        <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC()?>" alt="">
+                        <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC($id_campania)?>" alt="">
                         <p><?= $lang['titulo_form'];?></p>
                     </div>
                     <form class="formulario"  action="">

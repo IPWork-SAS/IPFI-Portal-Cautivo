@@ -18,16 +18,16 @@
     include_once("../lang/{$lang}.php"); 
 
     $conexion = new Conexion($lang['btn_continuar']);
-    
-    if(isset($_SESSION['mac_cliente'])) {
-        $campania = new Campania();
+    $campania = new Campania();
+    $id_campania = $campania->GetIdCampania();
+    $fileCampania = new FilesCampania();
+    $bannerFilesCampania = new BannerFilesCampania(); 
+
+    if(isset($_SESSION['mac_cliente'])) {        
         $nombre = strtoupper($campania->getNameUserByMac($_SESSION['mac_cliente']));
     } else {
         $nombre = 'a nuestra red WIFI';
     }
-
-    $fileCampania = new FilesCampania();
-    $bannerFilesCampania = new BannerFilesCampania(); 
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,7 @@
 </head>
 <style>
     html {
-        background-image: url(<?=$fileCampania->GetSRCBackgroundImage()?>);
+        background-image: url(<?=$fileCampania->GetSRCBackgroundImage($id_campania)?>);
     }    
 </style>
 <body>
@@ -79,13 +79,13 @@
             <div class="col-sm-12 my-auto">
                 <div class="card"> 
                     <div class="logo">
-                        <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC()?>" alt="">
+                        <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC($id_campania)?>" alt="">
                         <p><?=$lang['bienvenido_usuario'].$nombre.'!'?></p>
                     </div>
                     <div class="container-carrusel">
                         <div class="slider carrousel">
                             <?php
-                                foreach ($bannerFilesCampania->GetSRCBannerList() as $key => $value) {                                   
+                                foreach ($bannerFilesCampania->GetSRCBannerList($id_campania) as $key => $value) {                                   
                                     echo '
                                         <div class="banner-img">
                                             <picture>

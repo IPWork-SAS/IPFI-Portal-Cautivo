@@ -10,9 +10,10 @@
             $pk = 'id';            
        
 
-        public function GetSRCBannerList() {
+        public function GetSRCBannerList($id_campania = '') {
             $arraySRCBanner = array();
-            $filesBannerWeb = $this::all(); 
+            $sql = "SELECT * FROM :table WHERE id_campania = '$id_campania'";
+            $filesBannerWeb = $this::sql($sql, Orm::FETCH_MANY);
             
             foreach ($filesBannerWeb as $key => $value) {
                 $bannerFile = array();
