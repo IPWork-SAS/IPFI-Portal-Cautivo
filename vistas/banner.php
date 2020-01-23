@@ -2,34 +2,22 @@
     include_once "../db/campania.class.php";
     include_once "../db/files_campania.class.php";
     include_once "../db/banner_files_campania.class.php";
+    include_once "../clases/conexion.class.php";
 
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     if (isset($_REQUEST['i'])) {
         $_SESSION['i'] = $_REQUEST['i'];
         $lang = $_REQUEST['i'];
     } else {
         $lang = $_SESSION["i"]; 
-    }  
+    }   
 
     include_once("../lang/{$lang}.php"); 
 
-    $username = 'ipfiuser';
-    $password = 'ipfiuser.2019';
-
-    $sshTunnelStatus = $_SESSION['sshTunnelStatus'];
-    $client_mac = $_SESSION['mac_cliente'];
-    $uip = $_SESSION['ip_cliente'];
-    $proxy = $_SESSION['proxy'];
-    $url = $_SESSION['url'];
-
-    $port = '9997';
-    
-    if ($_SESSION['sshTunnelStatus'] == '1') {
-        $url = 'http://'.$_SESSION['zd_ip'].':'.$port.'/SubscriberPortal/hotspotlogin';
-    } else {
-        $url = 'http://'.$_SESSION['ip_ap'].':'.$port.'/SubscriberPortal/hotspotlogin';
-    }   
+    $conexion = new Conexion();
     
     if(isset($_SESSION['mac_cliente'])) {
         $campania = new Campania();
@@ -110,15 +98,10 @@
                             ?>
                         </div>
                     </div>
-                    <form class="field-btn-conectar" action="<?= $url?>" method="POST">
-                        <input type="hidden" name="url" value="<?= $url?>">
-                        <input type="hidden" name="proxy" value="<?= $proxy?>">
-                        <input type="hidden" name="uip" value="<?= $uip?>">
-                        <input type="hidden" name="client_mac" value="<?= $client_mac?>">
-                        <input type="hidden" name="username" value="<?= $username?>">
-                        <input type="hidden" name="password" value="<?= $password?>">
-                        <button class="btn btn-conectar" type="submit"><?=$lang['btn_continuar']?></button>
-                    </form>
+                    <?php 
+                        //Form de conexion
+                        echo $conexion->form_connection;
+                   ?>
                 </div>
             </div>
         </div>

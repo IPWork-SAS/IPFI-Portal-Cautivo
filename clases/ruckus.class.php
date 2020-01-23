@@ -1,7 +1,8 @@
 <?php
+
     class Ruckus {
         //Atributos
-        public $ip_nbi;
+        public $ip_nbi ;
         public $zd_ip;
         public $ip_ap;
         public $mac_ap;
@@ -11,14 +12,19 @@
         public $sshTunnelStatus;
         public $url;
         public $proxy;
+        public $tecnologia;
         
         public $dataValidation;
         public $ruckusTechology;
+
+        private $usuario = '';
+        private $password = '';
 
         function __construct() {              
         }
 
         function init($params) {
+            $this->tecnologia = 'Ruckus';
             switch ($this->CheckRuckusTechnology($params)) {
                 case 'SZ':
                     if($this->ValidateSZParametersURL($params)) {
@@ -138,6 +144,8 @@
                 session_start();
             }           
        
+            $_SESSION['tecnologia'] = $this->tecnologia;
+            $_SESSION['tipo_tecnologia'] = $this->ruckusTechology;
             $_SESSION['ip_ap'] = $this->ip_ap;
             $_SESSION['mac_ap'] = $this->mac_ap;
             $_SESSION['mac_cliente'] = $this->mac_cliente;
@@ -150,6 +158,8 @@
                 session_start();
             }
 
+            $_SESSION['tecnologia'] = $this->tecnologia;
+            $_SESSION['tipo_tecnologia'] = $this->ruckusTechology;
             $_SESSION['ip_nbi'] = $this->ip_nbi;
             $_SESSION['zd_ip'] = $this->zd_ip;
             $_SESSION['ip_ap'] = $this->ip_ap;
@@ -160,6 +170,51 @@
             $_SESSION['sshTunnelStatus'] = $this->sshTunnelStatus;
             $_SESSION['url'] = $this->url;
             $_SESSION['proxy'] = $this->proxy;
+        }
+
+        function GetFormConnection() {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }    
+            $tipo_tecnologia = $_SESSION['tipo_tecnologia'];       
+
+            switch ($tipo_tecnologia) {
+                case 'ZD':
+                    $port = '9997';
+                    $client_mac = $_SESSION['mac_cliente'];
+                    $uip = $_SESSION['ip_cliente'];                                    
+                    $url = 'http://'.$_SESSION['ip_ap'].':'.$port.'/SubscriberPortal/hotspotlogin';
+                    return '                        
+                        <form class="field-btn-conectar" action="'.$url.'" method="POST">
+                            <input type="hidden" name="uip" value="'.$uip.'">
+                            <input type="hidden" name="client_mac" value="'.$client_mac.'">
+                            <input type="hidden" name="username" value="'.$this->username.'">
+                            <input type="hidden" name="password" value="'.$this->password.'">
+                            <button class="btn btn-conectar" type="submit"><?=$lang["btn_continuar"]?></button>
+                        </form>
+                    ';
+                    break;
+                case 'SZ':
+                    $port = '9997';
+                    $client_mac = $_SESSION['mac_cliente'];
+                    $uip = $_SESSION['ip_cliente'];
+                    $proxy = $_SESSION['proxy'];                    
+                    $url = 'http://'.$_SESSION['zd_ip'].':'.$port.'/SubscriberPortal/hotspotlogin'; 
+                    return '                        
+                        <form class="field-btn-conectar" action="'.$url.'" method="POST">
+                            <input type="hidden" name="proxy" value="'.$proxy.'">
+                            <input type="hidden" name="uip" value="'.$uip.'">
+                            <input type="hidden" name="client_mac" value="'.$client_mac.'">
+                            <input type="hidden" name="username" value="'.$this->username.'">
+                            <input type="hidden" name="password" value="'.$this->password.'">
+                            <button class="btn btn-conectar" type="submit"><?=$lang["btn_continuar"]?></button>
+                        </form>
+                    ';
+                    break;
+                default:
+                    return '';
+                    break;
+            }       
         }
     }
 ?>
