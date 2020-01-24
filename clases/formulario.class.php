@@ -30,7 +30,12 @@
         public function SaveDataForm() {
             $dataClient = $this->GetDataCLient();           
             $campania = new Campania();
-    
+            $voucher = new Voucher();
+            
+            if(isset($dataClient['num_voucher'])) {
+                $voucher->UpdateVoucherState($dataClient['num_voucher'], $campania->GetCampania());                
+            }
+
             if($campania->SaveDataClient($dataClient)){
                 return true;
             } else {
@@ -94,6 +99,12 @@
                     $num_voucher = strtolower($this->utilidades->removeAccents(trim($value)));
                     $this->dataFormulario['num_voucher'] = $num_voucher;
                     $this->ValidateVoucher($num_voucher);
+                }
+                if ($key == 'razon_visita') {
+                    array_push($this->arrayElementsForm, $key);
+                    $razon_visita = $value;
+                    $this->dataFormulario['razon_visita'] = $razon_visita;
+                    $this->ValidateRazonVisita($razon_visita);
                 }
                 if ($key == 'email') {
                     array_push($this->arrayElementsForm, $key);
@@ -201,13 +212,14 @@
         } 
     
         function ValidateVoucher($num_voucher) {            
-            $voucher = new Voucher();        
+            $voucher = new Voucher();
+            $campania = new Campania();        
             if(empty($num_voucher)) {
                 $this->dataFormulario['errorMSGVoucher'] =  'error_voucher_vacio';
                 $this->dataFormulario['errorVoucher'] = true;
                 $this->dataFormulario['errorFormulario'] = true;
             } else {
-                if ( !$voucher->validateExistVoucher($num_voucher)) {
+                if ( !$voucher->validateExistVoucher($num_voucher, $campania->GetIdCampania())) {
                     $this->dataFormulario['errorMSGVoucher'] =  'error_voucher_existencia';
                     $this->dataFormulario['errorVoucher'] = true;
                     $this->dataFormulario['errorFormulario'] = true;
@@ -219,8 +231,7 @@
                     $this->dataFormulario['errorMSGVoucher'] =  'error_voucher_expiration';
                     $this->dataFormulario['errorVoucher'] = true;
                     $this->dataFormulario['errorFormulario'] = true;
-                }
-                else {
+                } else {
                     $this->dataFormulario['errorMSGVoucher'] = '';
                     $this->dataFormulario['errorVoucher'] = false;
                 }  
@@ -301,6 +312,20 @@
             }         
 
             $this->dataFormulario['genero'] = $genero;             
+        }
+
+        
+        function ValidateRazonVisita($razon_visita) {                  
+            if(empty($razon_visita)) {
+                $this->dataFormulario['errorMSGRazonVisita'] =  'error_razon_visita_vacio';
+                $this->dataFormulario['errorRazonVisita'] = true;
+                $this->dataFormulario['errorFormulario'] = true;
+            } else {
+                $this->dataFormulario['errorMSGRazonVisita'] = '';
+                $this->dataFormulario['errorRazonVisita'] = false; 
+            }         
+
+            $this->dataFormulario['razon_visita'] = $razon_visita;             
         }
 
     

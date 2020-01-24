@@ -5,8 +5,8 @@ $(document).ready(function() {
     //Submit evento
     $('#submit').click(function(e){
         e.preventDefault();
-        //submitButton = document.getElementById('submit');
-        //submitButton.disabled = true;
+        submitButton = document.getElementById('submit');
+        submitButton.disabled = true;
 
         dataForm = getDataForm();        
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
                 if (data.code == "200"){
                     window.location = '../vistas/banner.php';
                 } else {
-                    //submitButton.disabled = false;
+                    submitButton.disabled = false;
                     setErrorForm(data);
                 }
             },
@@ -85,6 +85,11 @@ function setErrorForm(data) {
         if (data.errorGenero) {
             setErrorGenero(data);
         }
+    }
+    if (data.errorRazonVisita != null) {
+        if (data.errorRazonVisita) {
+            setErrorRazonVisita(data);
+        }
     }  
 }
 
@@ -111,6 +116,9 @@ function getDataForm() {
     }
     if (document.getElementById('num_voucher') != null) {
         arrayDatosFormulario['num_voucher'] = $("#num_voucher").val();
+    }
+    if (document.getElementById('razon_visita') != null) {
+        arrayDatosFormulario['razon_visita'] = $("#razon_visita").val();
     }
     if (document.getElementById('edad') != null) {
         arrayDatosFormulario['edad'] = $("#edad").val();
@@ -177,6 +185,14 @@ function incializarVariables() {
         var errorCheck= document.getElementById("errorMSGCheck");
         errorCheck.hidden = true;   
       }
+}
+
+function setErrorRazonVisita() {
+    var spanErrorRazonVisita = document.getElementById("errorMSGRazonVisita");
+    spanErrorRazonVisita.textContent = data.errorMSGRazonVisita;
+    spanErrorRazonVisita.hidden = false;
+    var formGroupRazonVisita = document.getElementById("form_group_razon_visita");
+    formGroupRazonVisita.classList.add("input_error");
 }
 
 function setErrorEmail(data) {
@@ -251,6 +267,22 @@ function setErrorCheck(data) {
     formGroupCheck.classList.add("input_error");
 }
 
+
+
+function quitErrorRazonVisita() {    
+    var formGroupRazonVisita = document.getElementById("form_group_razon_visita");
+    if (formGroupRazonVisita.classList.contains("input_error")) {
+        formGroupRazonVisita.classList.remove("input_error");
+        var inputRazonVisita = document.getElementById("razon_visita");
+        inputRazonVisita.value = "";
+        var spanErrorRazonVisita = document.getElementById("errorMSGRazonVisita");
+        if(spanErrorRazonVisita != null) {
+            spanErrorRazonVisita.textContent = "";
+            spanErrorRazonVisita.hidden = true;
+        }        
+    }   
+    
+}
 
 function quitErrorHabitacion() {    
     var formGroupHabitacion = document.getElementById("form_group_habitacion");
@@ -378,6 +410,10 @@ function quitErrorCheck() {
             spanErrorCheck.textContent = "";
         }  
     }  
+}
+
+function restaurarInputRazonVisita() {
+    quitErrorRazonVisita();
 }
 
 function restaurarInputEmail() {

@@ -38,6 +38,7 @@
             'errorEdad'=>isset($datosFormulario->errorEdad) ? $datosFormulario->errorEdad: false,
             'errorTelefono'=>isset($datosFormulario->errorTelefono) ? $datosFormulario->errorTelefono: false,
             'errorGenero'=>isset($datosFormulario->errorGenero) ? $datosFormulario->errorGenero: false,
+            'errorRazonVisita'=>isset($datosFormulario->errorRazonVisita) ? $datosFormulario->errorRazonVisita: false,
             'errorCheck' => isset($datosFormulario->errorCheck) ? $datosFormulario->errorCheck : false,
             'errorMSGHabitacion'=>!empty($datosFormulario->errorMSGHabitacion) ? $lang[$datosFormulario->errorMSGHabitacion] : '',
             'errorMSGVoucher'=>!empty($datosFormulario->errorMSGVoucher) ? $lang[$datosFormulario->errorMSGVoucher]: '',
@@ -47,6 +48,7 @@
             'errorMSGEdad'=>!empty($datosFormulario->errorMSGEdad) ? $lang[$datosFormulario->errorMSGEdad] : '', 
             'errorMSGTelefono'=>!empty($datosFormulario->errorMSGTelefono) ? $lang[$datosFormulario->errorMSGTelefono] : '', 
             'errorMSGGenero' => !empty($datosFormulario->errorMSGGenero) ?$lang[$datosFormulario->errorMSGGenero] : '',
+            'errorMSGRazonVisita' => !empty($datosFormulario->errorMSGRazonVisita) ?$lang[$datosFormulario->errorMSGRazonVisita] : '',
             'errorMSGCheck' => !empty($datosFormulario->errorMSGCheck) ?$lang[$datosFormulario->errorMSGCheck] : ''           
         ]);
     }

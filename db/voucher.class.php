@@ -51,8 +51,7 @@
             }   
         }
         
-        public function ValidateVoucherExpiration($num_voucher = '') {
-        
+        public function ValidateVoucherExpiration($num_voucher = '') {        
             $voucher = $this::retrieveByvoucher($num_voucher, Orm::FETCH_ONE); 
 
             $fecha_inicio = date('Y-m-d', strtotime($voucher->fecha_inicio));
@@ -68,8 +67,9 @@
             }          
         }
 
-        public function validateExistVoucher($num_voucher = '') {
-            $voucher = $this::retrieveByvoucher($num_voucher, Orm::FETCH_ONE); 
+        public function validateExistVoucher($num_voucher = '', $id_campania = '') {
+            $sql = "SELECT * FROM :table WHERE num_voucher = '$num_voucher' AND id_campania = '$id_campania'";
+            $voucher = $this::sql($sql, Orm::FETCH_ONE); 
             if(isset($voucher)) {
                 return true;
             }
@@ -78,10 +78,11 @@
             }
         }
 
-        public function validateUsesVoucher($num_voucher = '') {
-            $voucher = $this::retrieveByvoucher($num_voucher, Orm::FETCH_ONE); 
-            if((isset($voucher))&&($voucher->num_usos == 0)){
-                $voucher->estado = 'En Uso';
+        public function validateUsesVoucher($num_voucher = '', $campania = array()) {
+            $voucher = $this::retrieveByvoucher($num_voucher, Orm::FETCH_ONE);
+
+            if((isset($voucher))&& (($voucher->num_usos == $voucher->total_num_usos))){
+                $voucher->estado = 'Sin Usos Disponibles';
                 $voucher->save();
                 return true;
             }
@@ -90,5 +91,46 @@
             }
         }
 
-
+        public function UpdateVoucherState($num_voucher = '', $campania) {
+            $voucher = $this::retrieveByvoucher($num_voucher, Orm::FETCH_ONE);
+            
+            if($voucher->num_usos == $voucher->total_num_usos){
+                $voucher->num_usos = $voucher->total_num_usos;
+            }
+            
+            if(($voucher->num_usos >= 0 && $voucher->num_usos != $voucher->total_num_usos)){
+                if($voucher->id_caducidad == 3 && $voucher->estado == 'Sin Uso'){
+                    $daysActive = $voucher->dias_disponibles;
+                    $hoursActive = $voucher->horas_disponibles;
+                    $minutesActive = $voucher->minutos_disponibles;
+                    
+                    date_default_timezone_set('America/Bogota');
+                  
+                    $fecha_finCampania = date('Y-m-d 00:00:00', strtotime($campania->fecha_fin));
+    
+                    $startDateActive = date("Y-m-d H:i:s");
+                    $endDateActive = date('Y-m-d H:i:s',strtotime("+$daysActive day +$hoursActive hour +$minutesActive minutes",strtotime($startDateActive)));
+    
+                    if($endDateActive > $fecha_finCampania){
+                        $voucher->fecha_inicio = $startDateActive;
+                        $voucher->fecha_fin = $fecha_finCampania;
+                        $voucher->num_usos = $voucher->num_usos+1;
+                        $voucher->estado = 'En Uso';
+                        $voucher->save();
+                    }
+                    if($endDateActive <= $fecha_finCampania){
+                        $voucher->fecha_inicio = $startDateActive;
+                        $voucher->fecha_fin = $endDateActive;
+                        $voucher->num_usos = $voucher->num_usos+1;
+                        $voucher->estado = 'En Uso';
+                        $voucher->save();
+                    }
+                    
+                } else{
+                    $voucher->num_usos = $voucher->num_usos+1;
+                    $voucher->estado = 'En Uso';
+                    $voucher->save();
+                }
+            }
+        }
     }

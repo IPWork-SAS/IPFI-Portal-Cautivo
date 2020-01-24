@@ -13,7 +13,16 @@
         "seleccion_genero_form" => "Seleccione el género",
         "masculino_genero_form" => "Masculino",
         "femenino_genero_form" => "Femenino",
+         //Genero en el Form
         "otro_genero_form" => "Otro",
+        //Razon Visita en el Form
+        "seleccion_razon_visita_form" => "Seleccione la razon de la visita",
+        "vacaciones_razon_visita_form" => "Vacaciones",
+        "trabajo_razon_visita_form" => "Trabajo",
+        "congreso_razon_visita_form" => "Congreso",
+        "convencion_razon_visita_form" => "Convencion",
+        "otro_razon_visita_form" => "Otro",
+        //Numero de habitacion Form
         "num_habitacion_form" => "Ingrese el numero de la habitacion",
         "voucher_form" => "Ingrese el pin acceso a internet",
         "terminos_link" => "Aceptar Terminos y Condiciones",
@@ -49,9 +58,11 @@
         "error_edad_min" => "La edad debe ser mayor a 18 años",
         //Genero
         "error_genero_vacio" => "El campo genero es obligatorio",
+        //Razon Visita
+        "error_razon_visita_vacio" => "El campo razon de visita es obligatorio",
         //Numero Habitacion
-        "error_num_habitacion" => "El numero de habitacion no existe",
-        "error_num_habitacion_vacio" => "El campo numero de habitacion es obligatorio",
+        "error_num_habitacion_vacio" => "El numero de habitacion no existe",
+        "error_num_habitacion" => "El campo numero de habitacion es obligatorio",
         //Voucher
         "error_voucher_vacio" => "El campo pin es obligatorio",
         "error_voucher_existencia" => "El pin es invalido",

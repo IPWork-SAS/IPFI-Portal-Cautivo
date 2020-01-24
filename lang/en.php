@@ -14,6 +14,14 @@
         "masculino_genero_form" => "Male",
         "femenino_genero_form" => "Female",
         "otro_genero_form" => "Other",
+        //Razon Visita en el Form
+        "seleccion_razon_visita_form" => "Select the reason visit",
+        "vacaciones_razon_visita_form" => "Vacation",
+        "trabajo_razon_visita_form" => "Work",
+        "congreso_razon_visita_form" => "Congress",
+        "convencion_razon_visita_form" => "Convention",
+        "otro_razon_visita_form" => "Other",
+        //Numero de habitacion Form
         "num_habitacion_form" => "Enter the room number",
         "voucher_form" => "Enter the access internet pin",
         "terminos_link" => "Accept Terms and Conditions",
@@ -49,8 +57,10 @@
         "error_edad_min" => "Age must be over 18 years old",
         //Genero
         "error_genero_vacio" => "The gender field is mandatory",
+        //Razon Visita
+        "error_razon_visita_vacio" => "The reason visit field is mandatory",
         //Numero Habitacion
-        "error_num_habitacion" => "The room number field is mandatory",
+        "error_num_habitacion_vacio" => "The room number field is mandatory",
         "error_num_habitacion" => "The room number does not exist",
         //Voucher
         "error_voucher_vacio" => "The pin field is mandatory",

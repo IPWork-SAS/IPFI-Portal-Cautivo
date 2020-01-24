@@ -132,4 +132,13 @@
                 return '0';
             }
         }
+
+        public function GetCampania() {
+            $campania = $this::sql("SELECT* FROM campania where campania = ':table'", Orm::FETCH_ONE);
+            if(isset($campania)) {
+                return $campania;
+            } else {
+                return '0';
+            }
+        }
     }

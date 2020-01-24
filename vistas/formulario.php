@@ -147,6 +147,22 @@
                                 </div>
                                 ';
                             }
+                            // Se valida que exista el campo voucher en los datos de la campania, si existe se muestra el contenido html. 
+                            if (isset($datosCampania['razon_visita'])) {
+                                echo '
+                                <div class="form-group" id="form_group_razon_visita"  name="form_group_razon_visita">
+                                    <select id="razon_visita"  name="razon_visita" class="form-control form-control-sm" required onfocus="restaurarInputRazonVisita()">
+                                        <option selected value="">'.$lang['seleccion_razon_visita_form'].'</option>
+                                        <option value="Vacaciones">'.$lang['vacaciones_razon_visita_form'].'</option>
+                                        <option value="Trabajo">'.$lang['trabajo_razon_visita_form'].'</option>
+                                        <option value="Congreso">'.$lang['trabajo_razon_visita_form'].'</option>
+                                        <option value="Convencion">'.$lang['convencion_razon_visita_form'].'</option>
+                                        <option value="Otro">'.$lang['otro_razon_visita_form'].'</option>
+                                    </select>
+                                    <span id="errorMSGRazonVisita"></span>
+                                </div>
+                                ';
+                            }
                         ?>  
 
                         <div class="form-group check-terminos" id="form_group_check" name="form_group_check">
