@@ -68,7 +68,7 @@
         }
 
         public function validateExistVoucher($num_voucher = '', $id_campania = '') {
-            $sql = "SELECT * FROM :table WHERE num_voucher = '$num_voucher' AND id_campania = '$id_campania'";
+            $sql = "SELECT * FROM :table WHERE voucher = '$num_voucher' AND id_campania = '$id_campania'";
             $voucher = $this::sql($sql, Orm::FETCH_ONE); 
             if(isset($voucher)) {
                 return true;
