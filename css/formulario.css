@@ -52,23 +52,23 @@ a:hover {
 
 /* CLASES MODIFICABLES */
 .formulario {    
-    background: #948c8c91;
+    background: #005153ad;
     color: #EEE;
 }
 
 .btn-conect {
     color: #EEE;
-    background-color: rgb(160,19,35,0.91);
-    border-color: #000000;
+    background-color: #20396f;
+    border-color: #20396f;
 }
 
 .btn-conect:hover {
-    background-color: rgb(190, 33, 50, 0.91);
+    background-color: #1a2b50;
     color: #EEE;
 }
 
 .custom-control-input:checked~.custom-control-label::before {
     color: #fff;
-    border-color: rgb(160,19,35,0.91);
-    background-color: rgb(160,19,35,0.91);
+    border-color: #20396f;
+    background-color: #20396f;
 }

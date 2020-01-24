@@ -42,13 +42,13 @@
 
 .btn-conectar {       
     color: #EEE;
-    background-color: rgb(160,19,35,0.91);
+    background-color: #20396f;
     border-color: #000000;
 }
 
 .btn-conectar:hover,
 .btn-conectar:focus {
-    background-color: rgb(190, 33, 50, 0.91);
+    background-color: #1a2b50;
     color: #EEE;
 }
 
