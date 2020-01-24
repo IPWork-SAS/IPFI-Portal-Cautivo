@@ -155,7 +155,7 @@
                                         <option selected value="">'.$lang['seleccion_razon_visita_form'].'</option>
                                         <option value="Vacaciones">'.$lang['vacaciones_razon_visita_form'].'</option>
                                         <option value="Trabajo">'.$lang['trabajo_razon_visita_form'].'</option>
-                                        <option value="Congreso">'.$lang['trabajo_razon_visita_form'].'</option>
+                                        <option value="Congreso">'.$lang['congreso_razon_visita_form'].'</option>
                                         <option value="Convencion">'.$lang['convencion_razon_visita_form'].'</option>
                                         <option value="Otro">'.$lang['otro_razon_visita_form'].'</option>
                                     </select>
