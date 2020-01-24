@@ -184,12 +184,14 @@
                     $client_mac = $_SESSION['mac_cliente'];
                     $uip = $_SESSION['ip_cliente'];                                    
                     $url = 'http://'.$_SESSION['ip_ap'].':'.$port.'/SubscriberPortal/hotspotlogin';
+                    $username = $_SESSION['username'];
+                    $password = $_SESSION['password'];
                     return '                        
                         action="'.$url.'" method="POST">
                             <input type="hidden" name="uip" value="'.$uip.'">
                             <input type="hidden" name="client_mac" value="'.$client_mac.'">
-                            <input type="hidden" name="username" value="'.$this->username.'">
-                            <input type="hidden" name="password" value="'.$this->password.'">
+                            <input type="hidden" name="username" value="'.$username.'">
+                            <input type="hidden" name="password" value="'.$password.'">
                     ';
                     break;
                 case 'SZ':
@@ -198,13 +200,15 @@
                     $uip = $_SESSION['ip_cliente'];
                     $proxy = $_SESSION['proxy'];                    
                     $url = 'http://'.$_SESSION['zd_ip'].':'.$port.'/SubscriberPortal/hotspotlogin'; 
+                    $username = $_SESSION['username'];
+                    $password = $_SESSION['password'];
                     echo ' 
                         action="'.$url.'" method="POST">
                             <input type="hidden" name="proxy" value="'.$proxy.'">
                             <input type="hidden" name="uip" value="'.$uip.'">
                             <input type="hidden" name="client_mac" value="'.$client_mac.'">
-                            <input type="hidden" name="username" value="'.$this->username.'">
-                            <input type="hidden" name="password" value="'.$this->password.'">                            
+                            <input type="hidden" name="username" value="'.$username.'">
+                            <input type="hidden" name="password" value="'.$password.'">                            
                     ';
                     exit;
                     break;

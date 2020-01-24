@@ -36,7 +36,7 @@
         public function SaveDataClient($dataClient) {
 
             $utilidades = new Utilidades();
-            $this->id_evento = 2;
+            $this->id_evento = $this->GetIdCampania();
             $this->fecha_creacion = $utilidades->getDatetimeNow();
 
             if(isset($dataClient['nombre'])) {
@@ -61,7 +61,7 @@
                 $this->num_habitacion = $dataClient['num_habitacion'];
             }
             if(isset($dataClient['num_voucher'])) {
-                $this->num_voucher = $dataClient['num_voucher'];
+                $this->num_voucher = $dataClient['num_voucher'];                
             }
             if(isset($dataClient['os'])) {
                 $this->os = $dataClient['os'];

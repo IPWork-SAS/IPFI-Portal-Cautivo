@@ -1,6 +1,5 @@
 <?php
-    include_once 'db.class.php';
-    include_once 'campania.class.php';    
+    include_once 'db.class.php';  
     include_once 'config.php';
 
     class FilesCampania extends Orm {

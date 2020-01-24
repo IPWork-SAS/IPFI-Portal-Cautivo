@@ -22,7 +22,7 @@
         if ($formulario->SaveDataForm()) {
             echo json_encode(['code'=>200]);
             exit;
-        } else {
+        } else {            
             //Pendiente Mensaje cuando no guarde los datos
             echo json_encode(['code'=>404]);   
             exit;

@@ -3,6 +3,7 @@
     include_once('../db/voucher.class.php');
     include_once('../db/habitacion.class.php');
     include_once('../db/campania.class.php');
+    include_once('../clases/radius.class.php');
 
     class Formulario {
         
@@ -35,9 +36,14 @@
             if(isset($dataClient['num_voucher'])) {
                 $voucher->UpdateVoucherState($dataClient['num_voucher'], $campania->GetCampania());                
             }
-
+            //Se guardan los datos de la campaña en BD
             if($campania->SaveDataClient($dataClient)){
-                return true;
+                $radius = new Radius();                
+                if($radius->add_user($campania->id)) {
+                    return true;
+                } else {
+                    return false;
+                }                
             } else {
                 return false;
             }        
@@ -55,6 +61,7 @@
 
             return $dataClient;
         }
+
         function SetDataWifi() {
              //Datos de que suministra el AP
             if (session_status() == PHP_SESSION_NONE) {
