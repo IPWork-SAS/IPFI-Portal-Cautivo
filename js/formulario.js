@@ -187,7 +187,7 @@ function incializarVariables() {
       }
 }
 
-function setErrorRazonVisita() {
+function setErrorRazonVisita(data) {
     var spanErrorRazonVisita = document.getElementById("errorMSGRazonVisita");
     spanErrorRazonVisita.textContent = data.errorMSGRazonVisita;
     spanErrorRazonVisita.hidden = false;
