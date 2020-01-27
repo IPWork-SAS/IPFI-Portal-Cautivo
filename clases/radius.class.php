@@ -3,7 +3,7 @@
     include_once '../db/users_radius.class.php';
 
     class Radius {
-        public function add_user($id_campania) {
+        public function add_user($campania) {
             $active         = 'active';
             $cap_data       = 'soft';
             $language       = '4_4';
@@ -58,7 +58,7 @@
             } else {
                 //Agregamos los datos del usuario en radius
                 $user_radius = new UsersRadius();           
-                if ($user_radius->SaveDataUserRadius($ramdomUser, $id_campania)) {
+                if ($user_radius->SaveDataUserRadius($ramdomUser, $campania)) {
                     return true;
                 } else {
                     return false;

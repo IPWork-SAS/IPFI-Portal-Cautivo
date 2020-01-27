@@ -39,7 +39,7 @@
             //Se guardan los datos de la campaña en BD
             if($campania->SaveDataClient($dataClient)){
                 $radius = new Radius();                
-                if($radius->add_user($campania->id)) {
+                if($radius->add_user($campania)) {
                     return true;
                 } else {
                     return false;

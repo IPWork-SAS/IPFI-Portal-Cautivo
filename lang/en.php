@@ -34,6 +34,7 @@
          //Errores de la validacion del cliente al conectarse al portal
         "error_technology" => "Ops! Something went wrong. Contact the network administrator - Error 2",
         "error_url" => "Ops! Something went wrong. Contact the network administrator - Error 3",
+        "error_user_radius" => "Ops! Something went wrong. Contact the network administrator - Error 4", 
         "error_licencia" => "Ops! The license has expired. Contact the network administrator",
    
         //Validaciones Formulario

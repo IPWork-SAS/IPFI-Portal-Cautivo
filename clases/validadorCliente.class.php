@@ -16,9 +16,7 @@
 
         function ValidarCliente() {
             //Validacion si existe o no el cliente que ingresa al portal cautivo
-            if($this->ValidarExistenciaClienteByMac($this->mac_cliente)) {
-                $this->clienteValido = true;
-                $this->clienteNuevo = false;
+            if($this->ValidarExistenciaClienteByMac($this->mac_cliente)) {                
                 //Se pregunta si la campaña pide voucher
                 if ($this->EsClienteConVoucher()) {
                     if(!$this->ValidarVoucherByMac($this->mac_cliente)) {
@@ -26,6 +24,15 @@
                         $this->error = 'error_voucher_expiration';                     
                     } 
                 }
+                if($this->SetUserPasswordSession($this->mac_cliente)) {
+                    $this->clienteValido = true;
+                    $this->clienteNuevo = false;
+                } else {
+                    $this->clienteValido = false;
+                    $this->clienteNuevo = false;
+                    $this->error = 'error_user_radius'; 
+                }               
+
             } else {
                 $this->clienteValido = true;
                 $this->clienteNuevo = true;
@@ -35,6 +42,24 @@
         function ValidarExistenciaClienteByMac($mac_cliente) {
             $campania = new Campania();
             return $campania->ValidateExistClientByMac($mac_cliente);
+        }
+
+        function SetUserPasswordSession($mac_cliente) {
+            $campania = new Campania();   
+            $username = $campania->GetUserRadius($mac_cliente);
+
+            if (!empty($username)) {
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start();
+                }
+                
+                $_SESSION['username'] = $username;
+                $_SESSION['password'] = $username;
+                return true;
+            } else {
+                return false;
+            }
+           
         }
 
         function EsClienteConVoucher() {

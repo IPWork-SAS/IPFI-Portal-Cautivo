@@ -9,12 +9,13 @@
             $table = 'users_radius',
             $pk = 'id'; 
 
-            public function SaveDataUserRadius($randomUser, $id_dato_campania) {
+            public function SaveDataUserRadius($randomUser, $campania) {
 
                 $this->SetUserPassSession($randomUser);
 
                 $utilidades = new Utilidades();
-                $this->id_cliente = $id_dato_campania;
+                $this->id_campania = $campania->id_evento;
+                $this->id_cliente = $$campania->id;
                 $this->fecha_creacion = $utilidades->getDatetimeNow();
                 $this->username = $randomUser;
                 $this->password = $randomUser;             

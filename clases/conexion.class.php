@@ -28,7 +28,7 @@
             }
 
             return $_SESSION['tecnologia'];
-        }
+        }      
 
         function BuildFormRuckus() {
             $ruckus = new Ruckus();

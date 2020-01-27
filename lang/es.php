@@ -32,11 +32,12 @@
         "bienvenido_usuario" => "Bienvenido ",
 
         //Errores
-        "error_default" => "Ops! Algo salio mal. Pongase en contacto con el administrador de la red - Error 1",
+        "error_default" => "Ops! Algo salio mal. Pongase en contacto con el administrador de la red - Error 1",       
         //Errores de la validacion del cliente al conectarse al portal
         "error_technology" => "Ops! Algo salio mal. Pongase en contacto con el administrador de la red - Error 2",
         "error_url" => "Ops! Algo salio mal. Pongase en contacto con el administrador de la red - Error 3",
         "error_licencia" => "Ops! La licencia ha caducado. Pongase en contacto con el administrador de la red.",
+        "error_user_radius" => "Ops! Algo salio mal. Pongase en contacto con el administrador de la red - Error 4", 
         //Validaciones Formulario
         //Nombre
         "error_nombre_vacio" => "El campo nombre es obligatorio",
