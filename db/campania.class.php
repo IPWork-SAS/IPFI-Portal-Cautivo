@@ -92,9 +92,38 @@
             }
         }
 
-        public function getUserByMac($mac = '') {
+        public function GetUserByMac($mac = '') {
             return $this::retrieveBymac_cliente($mac, Orm::FETCH_ONE);
         } 
+
+        public function ValidateExistUserRadiusByVoucher($voucher) {
+            $user = $this::sql("SELECT* FROM :table a inner join users_radius b on a.id = b.id_campania WHERE a.num_voucher = '$voucher'", Orm::FETCH_ONE);
+            if (isset($user)) {
+                $this->SetUserPassSession($user->username);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function ValidateExistUserRadiusByEmail($email) {
+            $user = $this::sql("SELECT* FROM :table a inner join users_radius b on a.id = b.id_campania WHERE a.email = '$email'", Orm::FETCH_ONE);
+            if (isset($user)) {
+                $this->SetUserPassSession($user->username);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function SetUserPassSession($randomNumber) {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+            
+            $_SESSION['username'] = $randomNumber;
+            $_SESSION['password'] = $randomNumber;
+        }
 
         /*Valida si el usuario se ha registrado*/
         public function ValidateExistClientByMac($mac = '') {

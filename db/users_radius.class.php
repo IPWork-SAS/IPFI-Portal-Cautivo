@@ -9,13 +9,12 @@
             $table = 'users_radius',
             $pk = 'id'; 
 
-            public function SaveDataUserRadius($randomUser, $campania) {
-
+            public function SaveDataUserRadius($randomUser, $campania) {    
                 $this->SetUserPassSession($randomUser);
 
                 $utilidades = new Utilidades();
                 $this->id_campania = $campania->id_evento;
-                $this->id_cliente = $$campania->id;
+                $this->id_cliente = $campania->id;
                 $this->fecha_creacion = $utilidades->getDatetimeNow();
                 $this->username = $randomUser;
                 $this->password = $randomUser;             
@@ -26,6 +25,7 @@
                 } catch (\Throwable $th) {
                     return false;
                 }
+                
             }
 
             function SetUserPassSession($randomNumber) {
@@ -35,5 +35,5 @@
                 
                 $_SESSION['username'] = $randomNumber;
                 $_SESSION['password'] = $randomNumber;
-            }
+            }            
     }

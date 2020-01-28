@@ -38,15 +38,32 @@
             }
             //Se guardan los datos de la campaña en BD
             if($campania->SaveDataClient($dataClient)){
-                $radius = new Radius();                
-                if($radius->add_user($campania)) {
-                    return true;
+                $radius = new Radius();    
+                if (!$this->ExistUserRadius($dataClient)) {
+                    if($radius->AddUser($campania)) {
+                        return true;
+                    } else {
+                        return false;
+                    } 
                 } else {
-                    return false;
-                }                
+                    
+                    return true;
+                }
             } else {
                 return false;
             }        
+        }
+
+        function ExistUserRadius($dataClient) {
+            $campania = new Campania();
+            if (array_key_exists('num_voucher', $dataClient)) {                
+                return $campania->ValidateExistUserRadiusByVoucher((object)$dataClient->num_voucher);
+            } else if (array_key_exists('email', $dataClient)) {
+                return $campania->ValidateExistUserRadiusByEmail((object)$dataClient->email);
+            } 
+            else {
+                return false;
+            }
         }
         
         function GetDataCLient() {

@@ -3,7 +3,7 @@
     include_once '../db/users_radius.class.php';
 
     class Radius {
-        public function add_user($campania) {
+        public function AddUser($campania) {
             $active         = 'active';
             $cap_data       = 'soft';
             $language       = '4_4';

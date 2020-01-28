@@ -17,7 +17,7 @@
 
     include_once("../lang/{$lang}.php"); 
 
-    $conexion = new Conexion($lang['btn_continuar']);
+    $conexion = new Conexion();
     $campania = new Campania();
     $id_campania = $campania->GetIdCampania();
     $fileCampania = new FilesCampania();
@@ -102,7 +102,7 @@
                     
                     <?php 
                         echo '
-                            <form class="field-btn-conectar"'.$conexion->form_connection.'
+                            <form class="field-btn-conectar "'.$conexion->form_connection.'
                                 <button class="btn btn-conectar" type="submit">'.$lang['bienvenido_usuario'].'</button>
                             </form>
                         ';
