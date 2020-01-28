@@ -3,6 +3,6 @@
     port = ""
     user = "root"
     password = "IPwork2019."
-    name = "unicentro"
-    campania = "Coworking"
+    name = "portal_oxohotel"
+    campania = "portal_cautivo_habitaciones"
 

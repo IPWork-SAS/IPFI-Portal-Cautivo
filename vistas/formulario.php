@@ -236,13 +236,18 @@
     <div class="popup" id="popup">
         <div class="popup-inner">
             <div class="popup__text">
-                <?php if ($lang['lang'] == 'es'){ ?>
-                    <div id="incluirTerminosCondiciones_es" class="container_terminos">
-
-                    </div>
-                <?php } else { ?>
-                    <div id="incluirTerminosCondiciones_en" class="container_terminos"></div>
-                <?php } ?>                
+                <div id="incluirTerminosCondiciones_es" class="container_terminos">
+                        <div class="logo_terminos">
+                            <img src="<?=$fileCampania->GetSRCIconImageSRC($id_campania)?>" alt="">
+                        </div>
+                        <?php 
+                            if ($lang['lang'] == 'es') {
+                                echo $terms->terms_conditions_es;
+                            } else {
+                                echo $terms->terms_conditions_en;
+                            }
+                        ?>
+                </div>              
             </div>
             <a class="popup__close" href="#">X</a>
         </div>
