@@ -23,11 +23,6 @@
     border-radius: 5px;
 }
 
-.btn-conectar:hover,
-.btn-conectar:focus {
-  background: #f1d02d;
-}
-
 
 .slick-prev {
     left: 2%;
@@ -40,7 +35,7 @@
 
 /* CLASES QUE CAMBIAN  */
 
-.btn-conectar {       
+/* .btn-conectar {       
     color: #EEE;
     background-color: #20396f;
     border-color: #000000;
@@ -51,5 +46,5 @@
     background-color: #1a2b50;
     color: #EEE;
 }
-
+ */
 

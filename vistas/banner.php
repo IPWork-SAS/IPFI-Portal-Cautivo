@@ -3,6 +3,8 @@
     include_once "../db/files_campania.class.php";
     include_once "../db/banner_files_campania.class.php";
     include_once "../clases/conexion.class.php";
+    include_once '../db/styles_campania.php';
+    include_once '../db/terms_conditions_campania.php';
 
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
@@ -22,6 +24,10 @@
     $id_campania = $campania->GetIdCampania();
     $fileCampania = new FilesCampania();
     $bannerFilesCampania = new BannerFilesCampania(); 
+    $stylesCampania = new StylesCampania();
+    $styles = $stylesCampania->GetStylesCampania($id_campania);
+    $termConditions = new TermsConditionsCampania();
+    $terms = $termConditions->GetTermsConditionsCampania($id_campania);
 
     if(isset($_SESSION['mac_cliente'])) {        
         $nombre = strtoupper($campania->getNameUserByMac($_SESSION['mac_cliente']));
@@ -57,7 +63,53 @@
 <style>
     html {
         background-image: url(<?=$fileCampania->GetSRCBackgroundImage($id_campania)?>);
-    }    
+    }  
+    
+    .img-logo {
+        width: <?=$styles->width_logo_movil?>;
+        margin: <?=$styles->margin_logo_movil?>;
+    }
+
+
+    @media (min-width: 992px) {
+        .img-logo {
+            width: <?=$styles->width_logo_web?>;
+            margin: <?=$styles->margin_logo_web?>;
+        }     
+    }
+
+    .formulario {    
+        background: <?=$styles->container_form_color?>;
+        color: <?=$styles->container_form_font_color?>;
+    }
+
+    .btn-conect {
+        color: <?=$styles->button_font_color?>;
+        background-color: <?=$styles->button_background_color?>;
+        border-color: <?=$styles->button_border_color?>;
+    }
+
+    .btn-conect:hover {
+        background-color: <?=$styles->button_hover_background_color?>;
+        color: <?=$styles->button_hover_font_color?>;
+    }
+
+    .btn-conectar {       
+        color: <?=$styles->button_font_color?>;
+        background-color: <?=$styles->button_background_color?>;
+        border-color: <?=$styles->button_border_color?>;
+    }
+
+    .btn-conectar:hover,
+    .btn-conectar:focus {
+        background-color: <?=$styles->button_hover_background_color?>;
+        color: <?=$styles->button_hover_font_color?>;
+    }
+
+    .custom-control-input:checked~.custom-control-label::before {
+        border-color: <?=$styles->checkbox_terms_border_color?>;
+        background-color: <?=$styles->checkbox_terms_background_color?>;
+    }
 </style>
 <body>
     <div class="selector-idioma">

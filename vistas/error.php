@@ -1,5 +1,9 @@
 <?php
     include_once "../db/files_campania.class.php";
+    include_once '../db/styles_campania.php';
+    include_once '../db/terms_conditions_campania.php';
+    include_once '../db/campania.class.php';
+
     session_start();
    
     if (isset($_REQUEST['i'])) {
@@ -18,7 +22,13 @@
         $error_message = $lang['error_default'];
     }
 
+    $campania = new Campania();
+    $id_campania = $campania->GetIdCampania();
     $fileCampania = new FilesCampania();
+    $stylesCampania = new StylesCampania();
+    $styles = $stylesCampania->GetStylesCampania($id_campania);
+    $termConditions = new TermsConditionsCampania();
+    $terms = $termConditions->GetTermsConditionsCampania($id_campania);
 ?>
 
 <!DOCTYPE html>
@@ -36,8 +46,47 @@
 </head>
 <style>
     html {
-        background-image: url(<?=$fileCampania->GetSRCBackgroundImage()?>);
-    }    
+        background-image: url(<?=$fileCampania->GetSRCBackgroundImage($id_campania)?>);
+    }  
+    
+    .img-logo {
+        width: <?=$styles->width_logo_movil?>;
+        margin: <?=$styles->margin_logo_movil?>;
+    }
+
+
+    @media (min-width: 992px) {
+        .img-logo {
+            width: <?=$styles->width_logo_web?>;
+            margin: <?=$styles->margin_logo_web?>;
+        }     
+    }
+
+    .formulario {    
+        background: <?=$styles->container_form_color?>;
+        color: <?=$styles->container_form_font_color?>;
+    }
+
+    .btn-conect {
+        color: <?=$styles->button_font_color?>;
+        background-color: <?=$styles->button_background_color?>;
+        border-color: <?=$styles->button_border_color?>;
+    }
+
+    .btn-conect:hover {
+        background-color: <?=$styles->button_hover_background_color?>;
+        color: <?=$styles->button_hover_font_color?>;
+    }
+
+    .custom-control-input:checked~.custom-control-label::before {
+        border-color: <?=$styles->checkbox_terms_border_color?>;
+        background-color: <?=$styles->checkbox_terms_background_color?>;
+    }
+
+    .msg_error {    
+        color: <?=$styles->msg_error_color_font?>;
+        background-color: <?=$styles->msg_error_color_background?>;  
+    }
 </style>
 <body>
     <div class="selector-idioma">
@@ -58,8 +107,8 @@
             <div class="col-sm-12 my-auto">
                 <div class="card"> 
                     <div class="logo">
-                        <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC()?>" alt="">
-                        <p><?=$error_message?></p>
+                        <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC($id_campania)?>" alt="">
+                        <p class="msg_error"><?=$error_message?></p>
                     </div>
                 </div>
             </div>

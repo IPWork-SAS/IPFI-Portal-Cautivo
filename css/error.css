@@ -7,8 +7,6 @@
     font-size: 2rem;
     padding: 3%;
     text-align: center;
-    color: white;
-    background: #005153ad;
     border-radius: 15px;
 }
 
@@ -22,7 +20,7 @@
 
 /* CLASES QUE CAMBIAN  */
 
-.logo p {    
+/* .logo p {    
     color: white;
     background-color: rgb(160,19,35,0.91);  
-}
+} */
