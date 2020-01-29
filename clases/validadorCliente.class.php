@@ -24,14 +24,9 @@
                         $this->error = 'error_voucher_expiration';                     
                     } 
                 }
-                if($this->SetUserPasswordSession($this->mac_cliente)) {
-                    $this->clienteValido = true;
-                    $this->clienteNuevo = false;
-                } else {
-                    $this->clienteValido = false;
-                    $this->clienteNuevo = false;
-                    $this->error = 'error_user_radius'; 
-                }               
+                $this->SetUserPasswordSession($this->mac_cliente);
+                $this->clienteValido = true;
+                $this->clienteNuevo = false;              
 
             } else {
                 $this->clienteValido = true;
@@ -54,12 +49,8 @@
                 }
                 
                 $_SESSION['username'] = $username;
-                $_SESSION['password'] = $username;
-                return true;
-            } else {
-                return false;
-            }
-           
+                $_SESSION['password'] = $username;                
+            }           
         }
 
         function EsClienteConVoucher() {
