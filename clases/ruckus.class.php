@@ -194,7 +194,7 @@
                     $port = '9997';
                     $client_mac = $_SESSION['mac_cliente'];
                     $uip = $_SESSION['ip_cliente'];                                    
-                    $url = 'http://'.$_SESSION['ip_ap'].':'.$port.'/SubscriberPortal/hotspotlogin';
+                    $url = 'http://'.$_SESSION['ip_ap'].':'.$port.'/login';
                     $username = $_SESSION['username'];
                     $password = $_SESSION['password'];
                     return '                        
