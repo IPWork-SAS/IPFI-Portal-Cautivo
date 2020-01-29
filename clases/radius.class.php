@@ -1,20 +1,23 @@
 <?php 
     include_once '../clases/utilidades.class.php';
     include_once '../db/users_radius.class.php';
+    include_once '../db/config.php';
 
     class Radius {
         public function AddUser($campania) {
+            $params = BD_PARAMETERS;
+
             $active         = 'active';
             $cap_data       = 'soft';
             $language       = '4_4';
             //No se que es
             $parent_id      = 0;
             //Este es el id del perfil con el que se crea el usuario, el perfil es el tiempo de conexion establecido en este caso es 1G-1Day y su id es 15
-            $profile_id     = 15;
+            $profile_id     = $params['radius']['profile_id'];
             //Es el id del realm en el caso de IPFI se creo con el id 37
-            $realm_id       = 37;
+            $realm_id       = $params['radius']['realm_id'];;
             //Token obtenido en la tabla usuarios de base de datos del usuario root
-            $token          = 'b4c6ac81-8c7c-4802-b50a-0a6380555b50';
+            $token          = $params['radius']['token'];
 
             $ramdomUser = $this->CreateRandomUser();
 
@@ -22,7 +25,7 @@
             $password = $ramdomUser;
 
             //URL donde esta el radiusdesk
-            $url = 'http://167.172.123.50/cake2/rd_cake/permanent_users/add.json';
+            $url = $params['radius']['url'].'/cake2/rd_cake/permanent_users/add.json';
             
             // The data to send to the API
             $postData = array(

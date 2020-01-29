@@ -5,6 +5,7 @@
     $passwordRuckus = 'prueba';
     // Se extraen los datos de configuracion de BD
     $params = parse_ini_file(sprintf('%s/parameter.ini.dist', __DIR__), true);
+
     //Se definen las variables globales
     define('RUCKUS_USERNAME', $usernameRuckus);
     define('RUCKUS_PASSWORD', $passwordRuckus);
