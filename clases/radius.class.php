@@ -21,8 +21,11 @@
 
             $ramdomUser = $this->CreateRandomUser();
 
-            $username = $ramdomUser;
-            $password = $ramdomUser;
+            //$username = $ramdomUser;
+            //$password = $ramdomUser;
+
+            $username = 'ipfiuser';
+            $password = 'ipfiuser.2019';
 
             //URL donde esta el radiusdesk
             $url = $params['radius']['url'].'/cake2/rd_cake/permanent_users/add.json';

@@ -42,7 +42,6 @@
         function SetUserPasswordSession($mac_cliente) {
             $campania = new Campania();   
             $username = $campania->GetUserRadius($mac_cliente);
-
             if (!empty($username)) {
                 if (session_status() == PHP_SESSION_NONE) {
                     session_start();
