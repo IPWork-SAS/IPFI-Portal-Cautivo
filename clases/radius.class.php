@@ -37,7 +37,9 @@
                 'realm_id'      => $realm_id,
                 'token'         => $token,
                 'username'      => $username,
-                'password'      => $password
+                'password'      => $password,
+                'name'          => $campania->nombre,
+                'surname'       => $campania->apellidos
             );
             
             // Setup cURL
