@@ -5,8 +5,8 @@ $(document).ready(function() {
     //Submit evento
     $('#submit').click(function(e){
         e.preventDefault();
-        // submitButton = document.getElementById('submit');
-        // submitButton.disabled = true;
+        submitButton = document.getElementById('submit');
+        submitButton.disabled = true;
 
         dataForm = getDataForm();        
 
@@ -19,7 +19,7 @@ $(document).ready(function() {
                 if (data.code == "200"){
                     window.location = '../vistas/banner.php';
                 } else {
-                    //submitButton.disabled = false;
+                    submitButton.disabled = false;
                     setErrorForm(data);
                 }
             },
