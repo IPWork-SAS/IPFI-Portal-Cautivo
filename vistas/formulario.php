@@ -15,9 +15,17 @@
         $lang = $_SESSION["i"]; 
     } 
 
+    $campania = new Campania();
+
+    if(isset($_SESSION['mac_cliente'])) {        
+       if ($campania->ValidateExistClientByMac($_SESSION['mac_cliente'])) {
+            header('Location: banner.php');
+       }
+    } 
+
     include_once("../lang/{$lang}.php");
     
-    $campania = new Campania();
+    
     $datosCampania = $campania->GetDatosCampaña();  
     $id_campania = $campania->GetIdCampania();
     
