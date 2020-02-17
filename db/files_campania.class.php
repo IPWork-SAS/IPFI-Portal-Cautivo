@@ -12,18 +12,21 @@
         public function GetSRCBackgroundImage($id_campania = '') {
             $sql = "SELECT * FROM :table WHERE id_tipo_archivo_multimedia = '1' AND id_campania = '$id_campania'";
             $fileBackground = $this::sql($sql, Orm::FETCH_ONE);
-            return 'data:'.$fileBackground->mime.';base64,'.base64_encode($fileBackground->datos).'';
+            // return 'data:'.$fileBackground->mime.';base64,'.base64_encode($fileBackground->datos).'';
+            return '..'.$fileBackground->nombre;
         }
 
         public function GetSRCIconImageSRC($id_campania = '') {
             $sql = "SELECT * FROM :table WHERE id_tipo_archivo_multimedia = '2' AND id_campania = '$id_campania'";
             $fileIcon = $this::sql("$sql", Orm::FETCH_ONE);
-            return 'data:'.$fileIcon->mime.';base64,'.base64_encode($fileIcon->datos).'';
+            // return 'data:'.$fileIcon->mime.';base64,'.base64_encode($fileIcon->datos).'';
+            return '..'.$fileIcon->nombre;
         }
 
         public function GetSRCFavicon($id_campania = '') {
             $sql = "SELECT * FROM :table WHERE id_tipo_archivo_multimedia = '3' AND id_campania = '$id_campania'";
             $fileFavicon = $this::sql("$sql", Orm::FETCH_ONE);
-            return 'data:'.$fileFavicon->mime.';base64,'.base64_encode($fileFavicon->datos).'';
+            // return 'data:'.$fileFavicon->mime.';base64,'.base64_encode($fileFavicon->datos).'';
+            return '..'.$fileFavicon->nombre;
         }
     }
