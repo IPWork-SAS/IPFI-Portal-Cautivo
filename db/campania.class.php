@@ -81,6 +81,9 @@
             if(isset($dataClient['ssid'])) {
                 $this->ssid = $dataClient['ssid'];
             }
+            if(isset($dataClient['razon_visita'])) {
+                $this->razon_visita = $dataClient['razon_visita'];
+            }
 
             try {
                 $this->save();
