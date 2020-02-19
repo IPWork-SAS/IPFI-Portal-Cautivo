@@ -145,7 +145,7 @@
                                         <div class="banner-img">
                                             <picture>
                                                 <source srcset="'.$value->srcImgWeb.'" media="(min-width: 800px)" />                                
-                                                <img src="'.$value->srcImgMovil.'" />
+                                                <img src="'.$value->srcImgWeb.'" />
                                             </picture>                                            
                                         </div>
                                     ';
