@@ -2,12 +2,12 @@
     
     include_once 'db.class.php'; 
     include_once '../clases/utilidades.class.php'; 
-  
+    include_once 'config.php';   
 
     class Voucher extends Orm {
 
         protected static    
-            $database = 'portal_oxohotel',
+            $database = BD_PARAMETERS['database']['name'],
             $table = 'vouchers',
             $pk = 'id_voucher';
 

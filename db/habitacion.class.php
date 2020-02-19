@@ -1,10 +1,11 @@
 <?php
-    include_once 'db.class.php';    
+    include_once 'db.class.php'; 
+    include_once 'config.php';   
 
     class Habitacion extends Orm {
 
         protected static    
-            $database = 'portal_oxohotel',
+            $database = BD_PARAMETERS['database']['name'],
             $table = 'habitaciones',
             $pk = 'id';
 
