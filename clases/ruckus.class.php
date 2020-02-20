@@ -195,10 +195,10 @@
                     $client_mac = $_SESSION['mac_cliente'];
                     $uip = $_SESSION['ip_cliente'];                                    
                     $url = 'http://'.$_SESSION['ip_ap'].':'.$port.'/login';
-                    //$username = $_SESSION['username'];
-                    //$password = $_SESSION['password'];
-                    $username = 'ipfiuser';
-                    $password = 'ipfiuser.2019';
+                    $username = $_SESSION['username'];
+                    $password = $_SESSION['password'];
+                    //$username = 'ipfiuser';
+                    //$password = 'ipfiuser.2019';
                     return '                        
                         action="'.$url.'" method="POST">
                             <input type="hidden" name="uip" value="'.$uip.'">
@@ -213,10 +213,10 @@
                     $uip = $_SESSION['ip_cliente'];
                     $proxy = $_SESSION['proxy'];                    
                     $url = 'http://'.$_SESSION['zd_ip'].':'.$port.'/SubscriberPortal/hotspotlogin'; 
-                    //$username = $_SESSION['username'];
-                   // $password = $_SESSION['password'];
-                    $username = 'ipfiuser';
-    $password = 'ipfiuser.2019';
+                    $username = $_SESSION['username'];
+                    $password = $_SESSION['password'];
+                    //$username = 'ipfiuser';
+                    //$password = 'ipfiuser.2019';
                     return ' 
                         action="'.$url.'" method="POST">
                             <input type="hidden" name="proxy" value="'.$proxy.'">

@@ -34,7 +34,7 @@
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />      
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $lang['titulo_website'];?></title>   
+    <title><?=$styles->title_portal ? $styles->title_portal : $lang['titulo_form'];?></title>   
     <link rel="stylesheet" href="../vendor/flag-icon/flag-icon.css"> 
     <link rel="stylesheet" href="../vendor/flag-icon/flag-icon.min.css"> 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
@@ -55,6 +55,9 @@
         margin: <?=$styles->margin_logo_movil?>;
     }
 
+    .title {
+        color: <?=$styles->color_title_portal?>  !important;
+    }
 
     @media (min-width: 992px) {
         .img-logo {
@@ -106,7 +109,7 @@
                 <div class="card"> 
                     <div class="logo">                        
                         <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC($id_campania)?>" alt="">
-                        <p><?= $lang['titulo_form'];?></p>
+                        <p class="title"><?=$styles->title_portal ? $styles->title_portal : $lang['titulo_form'];?></p>
                     </div>
                     <form class="formulario"  action="">
                         <input type="hidden" name="os" id="os"> 

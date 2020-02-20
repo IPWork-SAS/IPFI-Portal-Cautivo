@@ -8,7 +8,7 @@
 
 [radius]
     url = "http://64.225.36.245"
-    realm_id = 41
+    realm_id = 40
     profile_id = 22
     token = "521dc362-81a4-4a34-8a0b-052f03662c24"
 
