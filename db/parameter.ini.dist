@@ -2,9 +2,9 @@
     host = "localhost"
     port = ""
     user = "root"
-    password = "IPwork2019."
-    name = "unicentro"
-    campania = "Coworking"
+    password = ""
+    name = "portal_oxohotel"
+    campania = "portal_cautivo_habitaciones"
 
 [radius]
     url = "http://167.172.123.50"

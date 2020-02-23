@@ -125,7 +125,7 @@
                         
                         <?php 
                             // Se valida que exista el campo nombre y apellidos en los datos de la campania, si existe se muestra el contenido html. 
-                            if(isset($datosCampania['nombre']) && isset($datosCampania['apellidos'])) {
+                            if((isset($datosCampania['nombre']) && isset($datosCampania['apellidos'])) && (isset($datosCampania['estado_nombre']) || isset($datosCampania['estado_apellidos']))) {
                                 echo '
                                 <div class="form-row">
                                     <div class="form-group col-md-6" name="form_group_nombre" id="form_group_nombre">
@@ -140,7 +140,7 @@
                                 ';
                             } 
                             // Se valida que exista el campo email en los datos de la campania, si existe se muestra el contenido html. 
-                            if (isset($datosCampania['email'])) {
+                            if (isset($datosCampania['email']) && isset($datosCampania['estado_email'])) {
                                 echo '
                                 <div class="form-group" id="form_group_email"  name="form_group_email">
                                     <input type="email" required class="form-control form-control-sm" id="email" name="email" onfocus="restaurarInputEmail()" placeholder="'.$lang['email_form'].'">
@@ -149,7 +149,7 @@
                                 ';
                             }
                             // Se valida que exista el campo telefono en los datos de la campania, si existe se muestra el contenido html. 
-                            if (isset($datosCampania['telefono'])) {
+                            if (isset($datosCampania['telefono']) && isset($datosCampania['estado_telefono'])) {
                                 echo '
                                 <div class="form-group" id="form_group_telefono"  name="form_group_telefono">
                                 <input type="tel" onkeyup="dropInvalidCharactersTelefono()"  class="form-control form-control-sm" id="telefono" name="telefono" onfocus="restaurarInputTelefono()" placeholder="'.$lang['celular_form'].'" required>
@@ -158,7 +158,7 @@
                                 ';
                             }
                             // Se valida que exista el campo telefono en los datos de la campania, si existe se muestra el contenido html. 
-                            if (isset($datosCampania['edad'])) {
+                            if (isset($datosCampania['edad']) && isset($datosCampania['estado_edad'])) {
                                 echo '
                                 <div class="form-group" id="form_group_edad"  name="form_group_edad">
                                     <input type="text" onkeyup="dropInvalidCharactersAge()" class="form-control form-control-sm" id="edad" name="edad" onfocus="restaurarInputEdad()" placeholder="'.$lang['edad_form'].'" maxlength = "2" required>
@@ -167,7 +167,7 @@
                                 ';
                             }
                             // Se valida que exista el campo genero en los datos de la campania, si existe se muestra el contenido html. 
-                            if (isset($datosCampania['genero'])) {
+                            if (isset($datosCampania['genero']) && isset($datosCampania['estado_genero'])) {
                                 echo '
                                 <div class="form-group" id="form_group_genero"  name="form_group_genero">
                                     <select id="genero"  name="genero" class="form-control form-control-sm" required onfocus="restaurarInputGenero()">
@@ -181,7 +181,7 @@
                                 ';
                             }
                             // Se valida que exista el campo numero de habitacion en los datos de la campania, si existe se muestra el contenido html. 
-                            if (isset($datosCampania['num_habitacion'])) {
+                            if (isset($datosCampania['num_habitacion']) && isset($datosCampania['estado_num_habitacion'])) {
                                 echo '
                                 <div class="form-group" id="form_group_habitacion"  name="form_group_habitacion">
                                     <input type="text" required autocomplete="off" onkeyup="dropInvalidCharactersHabitacion()" class="form-control form-control-sm" id="num_habitacion" name="num_habitacion" onfocus="restaurarInputHabitacion()" placeholder="'.$lang['num_habitacion_form'].'">
@@ -190,7 +190,7 @@
                                 ';
                             }
                             // Se valida que exista el campo voucher en los datos de la campania, si existe se muestra el contenido html. 
-                            if (isset($datosCampania['num_voucher'])) {
+                            if (isset($datosCampania['num_voucher']) && isset($datosCampania['estado_num_voucher'])) {
                                 echo '
                                 <div class="form-group" id="form_group_voucher" name="form_group_voucher">
                                     <input type="text" required autocomplete="off" class="form-control form-control-sm" id="num_voucher" name="num_voucher" onfocus="restaurarInputVoucher()" placeholder="'.$lang['voucher_form'].'">
@@ -199,7 +199,7 @@
                                 ';
                             }
                             // Se valida que exista el campo voucher en los datos de la campania, si existe se muestra el contenido html. 
-                            if (isset($datosCampania['razon_visita'])) {
+                            if (isset($datosCampania['razon_visita']) && isset($datosCampania['estado_razon_visita'])) {
                                 echo '
                                 <div class="form-group" id="form_group_razon_visita"  name="form_group_razon_visita">
                                     <select id="razon_visita"  name="razon_visita" class="form-control form-control-sm" required onfocus="restaurarInputRazonVisita()">
