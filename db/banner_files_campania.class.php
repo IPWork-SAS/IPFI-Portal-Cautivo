@@ -17,12 +17,8 @@
             
             foreach ($filesBannerWeb as $key => $value) {
                 $bannerFile = array();
-                // $srcImgWeb = 'data:'.$value->mime_img_web.';base64,'.base64_encode($value->datos_img_web).'';
                 $srcImgWeb = '..'.$value->nombre_img_web;
-                // $srcImgMovil = 'data:'.$value->mime_img_movil.';base64,'.base64_encode($value->datos_img_movil).'';
-                $srcImgMovil = '..'.$value->nombre_img_movil;
                 $bannerFile['srcImgWeb'] = $srcImgWeb;
-                $bannerFile['srcImgMovil'] = $srcImgMovil;
                 array_push($arraySRCBanner, (object)$bannerFile);
             }
             return $arraySRCBanner;

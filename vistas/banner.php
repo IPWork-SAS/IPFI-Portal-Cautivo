@@ -29,8 +29,12 @@
     $termConditions = new TermsConditionsCampania();
     $terms = $termConditions->GetTermsConditionsCampania($id_campania);
 
-    if(isset($_SESSION['mac_cliente'])) {        
-        $nombre = strtoupper($campania->getNameUserByMac($_SESSION['mac_cliente']));
+    if(isset($_SESSION['mac_cliente'])) {  
+        if (!empty($campania->getNameUserByMac($_SESSION['mac_cliente']))) {
+            $nombre = strtoupper($campania->getNameUserByMac($_SESSION['mac_cliente']));
+        } else {
+            $nombre = 'a nuestra red WIFI';
+        }             
     } else {
         $nombre = 'a nuestra red WIFI';
     }
@@ -145,7 +149,7 @@
                                         <div class="banner-img">
                                             <picture>
                                                 <source srcset="'.$value->srcImgWeb.'" media="(min-width: 800px)" />                                
-                                                <img src="'.$value->srcImgMovil.'" />
+                                                <img src="'.$value->srcImgWeb.'" />
                                             </picture>                                            
                                         </div>
                                     ';
