@@ -1,10 +1,10 @@
 [database]
-    host = "157.230.157.246"
+    host = "localhost"
     port = ""
-    user = "ipfiprod"
-    password = "1PW0rk2020.*"
-    name = "portal_oxohotel"
-    campania = "portal_cautivo_habitaciones"
+    user = "root"
+    password = "IPwork2019."
+    name = "corferias"
+    campania = "Red_Gratuita"
 
 [radius]
     url = "http://64.225.36.245"
