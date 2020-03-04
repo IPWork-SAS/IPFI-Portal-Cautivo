@@ -5,6 +5,7 @@
     password = "IPwork2019."
     name = "unicentro"
     campania = "coworking"
+    id_locacion = "1"
 
 [radius]
     url = "http://167.172.123.50"

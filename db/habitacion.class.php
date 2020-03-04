@@ -10,7 +10,8 @@
             $pk = 'id';
 
         public function validateHabitacion($habitacion = '') {
-            $habitacion = $this::retrieveBynum_habitacion($habitacion, Orm::FETCH_ONE);
+            $id_locacion = BD_PARAMETERS['database']['id_locacion'];
+            $habitacion = $this::sql("SELECT* FROM :table WHERE num_habitacion = '$habitacion' and id_locacion = '$id_locacion'", Orm::FETCH_ONE);
          
             if(isset($habitacion)) {
                 return true;
