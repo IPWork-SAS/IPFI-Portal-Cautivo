@@ -81,6 +81,9 @@
             if(isset($dataClient['ssid'])) {
                 $this->ssid = $dataClient['ssid'];
             }
+            if(isset($dataClient['razon_visita'])) {
+                $this->razon_visita = $dataClient['razon_visita'];
+            }
 
             try {
                 $this->save();
@@ -128,6 +131,7 @@
         /*Valida si el usuario se ha registrado*/
         public function ValidateExistClientByMac($mac = '') {
             $user = $this::retrieveBymac_cliente($mac, Orm::FETCH_ONE);
+          
             if(isset($user)) {
                 return true;
             } else  {
@@ -172,7 +176,8 @@
         }
 
         public function GetUserRadius($mac_cliente) {
-            $sql = "SELECT* FROM :table a inner join users_radius b on a.id = b.id_cliente where a.mac_cliente = '$mac_cliente'";
+            $id_campania = BD_PARAMETERS['database']['id_campania'];
+            $sql = "SELECT* FROM :table a inner join users_radius b on a.id = b.id_cliente where a.mac_cliente = '$mac_cliente' and b.id_campania = '$id_campania'";
             $usuario = $this::sql($sql, Orm::FETCH_ONE);
 
             if (isset($usuario)) {
