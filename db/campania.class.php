@@ -175,7 +175,8 @@
         }
 
         public function GetUserRadius($mac_cliente) {
-            $sql = "SELECT* FROM :table a inner join users_radius b on a.id = b.id_cliente where a.mac_cliente = '$mac_cliente'";
+            $id_campania = BD_PARAMETERS['database']['id_campania'];
+            $sql = "SELECT* FROM :table a inner join users_radius b on a.id = b.id_cliente where a.mac_cliente = '$mac_cliente' and b.id_campania = '$id_campania'";
             $usuario = $this::sql($sql, Orm::FETCH_ONE);
 
             if (isset($usuario)) {
