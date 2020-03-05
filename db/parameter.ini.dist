@@ -1,16 +1,18 @@
 [database]
-    host = "localhost"
-    port = ""
-    user = "root"
-    password = "IPwork2019."
-    name = "unicentro"
-    campania = "Coworking"
+        host = "localhost"
+        port = ""
+        user = "root"
+        password = "IPwork2019."
+        name = "portal_oxohotel"
+        campania = "Santa_Catalina_Eventos_2020_03_03"
+        id_locacion = "2"
+        id_campania = "5"
 
 [radius]
-    url = "http://167.172.123.50"
-    realm_id = 37
-    profile_id = 15
-    token = "b4c6ac81-8c7c-4802-b50a-0a6380555b50"
+     url = "http://64.225.36.245"
+    realm_id = 41
+    profile_id = 24
+    token = "521dc362-81a4-4a34-8a0b-052f03662c24"
 
 [radius_prod]
     url = "http://64.225.36.245"

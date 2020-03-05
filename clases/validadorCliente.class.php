@@ -14,9 +14,9 @@
             $this->ValidarCliente();
         }   
 
-        function ValidarCliente() {
+        function ValidarCliente() {              
             //Validacion si existe o no el cliente que ingresa al portal cautivo
-            if($this->ValidarExistenciaClienteByMac($this->mac_cliente)) {                
+            if($this->ValidarExistenciaClienteByMac($this->mac_cliente)) {                 
                 //Se pregunta si la campaña pide voucher
                 if ($this->EsClienteConVoucher()) {
                     if(!$this->ValidarVoucherByMac($this->mac_cliente)) {

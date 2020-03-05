@@ -15,6 +15,7 @@
     include_once("../lang/{$lang}.php"); 
 
     $formulario = new Formulario($_REQUEST);
+    
     $datosFormulario = $formulario->GetDataForm();
 
     
