@@ -15,17 +15,9 @@
         $lang = $_SESSION["i"]; 
     } 
 
-    $campania = new Campania();
-
-    if(isset($_SESSION['mac_cliente'])) {        
-       if ($campania->ValidateExistClientByMac($_SESSION['mac_cliente'])) {
-            header('Location: banner.php');
-       }
-    } 
-
     include_once("../lang/{$lang}.php");
     
-    
+    $campania = new Campania();
     $datosCampania = $campania->GetDatosCampaña();  
     $id_campania = $campania->GetIdCampania();
     
@@ -64,7 +56,7 @@
     }
 
     .title {
-        color: <?=$styles->color_title_portal?> !important;
+        color: <?=$styles->color_title_portal?>  !important;
     }
 
     @media (min-width: 992px) {
@@ -214,7 +206,7 @@
                                 </div>
                                 ';
                             }
-                        ?>  
+                        ?>
 
                         <div class="form-group check-terminos" id="form_group_check" name="form_group_check">
                             <div class="custom-control custom-switch">

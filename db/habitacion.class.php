@@ -1,6 +1,6 @@
 <?php
-    include_once 'db.class.php'; 
-    include_once 'config.php';   
+    include_once 'db.class.php';
+    include_once 'config.php';    
 
     class Habitacion extends Orm {
 

@@ -9,7 +9,7 @@
             $table = 'users_radius',
             $pk = 'id'; 
 
-            public function SaveDataUserRadius($randomUser, $campania) {  
+            public function SaveDataUserRadius($randomUser, $campania) {    
                 $this->SetUserPassSession($randomUser);
 
                 $utilidades = new Utilidades();

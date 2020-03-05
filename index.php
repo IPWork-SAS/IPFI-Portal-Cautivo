@@ -2,13 +2,14 @@
     include_once('./controladores/validacion_controller.php');
     include_once('./clases/validadorURL.class.php');
     include_once('./clases/validadorCliente.class.php');
-    include_once('./clases/utilidades.class.php');    
+    include_once('./clases/utilidades.class.php');
 
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
-    } else {
-        session_destroy();
-    }
+    } 
+
+    session_destroy();
+
     
     $utilidades = new Utilidades();
     $utilidades->DetectLanguage();

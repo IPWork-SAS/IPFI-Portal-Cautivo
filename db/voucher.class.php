@@ -2,7 +2,7 @@
     
     include_once 'db.class.php'; 
     include_once '../clases/utilidades.class.php'; 
-    include_once 'config.php';   
+    include_once 'config.php';
 
     class Voucher extends Orm {
 

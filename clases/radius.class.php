@@ -75,7 +75,7 @@
             $utilidades = new Utilidades(); 
             $randomValue = $utilidades->GetRandomValue();
             $users_radius = new UsersRadius();
-            $user = $users_radius::retrieveByusername($randomValue, Orm::FETCH_ONE);
+            $user = $users_radius::retrieveByusername($randomValue, Orm::FETCH_ONE);    
             if (isset($user )) {
                 $this->CreateRandomUser();   
             } else {

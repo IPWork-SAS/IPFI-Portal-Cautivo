@@ -74,6 +74,7 @@
         color: <?=$styles->color_title_portal?> !important;
     }
 
+
     @media (min-width: 992px) {
         .img-logo {
             width: <?=$styles->width_logo_web?>;

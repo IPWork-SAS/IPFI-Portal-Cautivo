@@ -100,7 +100,8 @@
         } 
 
         public function ValidateExistUserRadiusByVoucher($voucher) {
-            $user = $this::sql("SELECT* FROM :table a inner join users_radius b on a.id = b.id_campania WHERE a.num_voucher = '$voucher'", Orm::FETCH_ONE);
+            $id_campania = BD_PARAMETERS['database']['id_campania'];
+            $user = $this::sql("SELECT* FROM :table a inner join users_radius b on a.id = b.id_cliente WHERE a.num_voucher = '$voucher' and b.id_campania = '$id_campania'", Orm::FETCH_ONE);
             if (isset($user)) {
                 $this->SetUserPassSession($user->username);
                 return true;
@@ -110,7 +111,8 @@
         }
 
         public function ValidateExistUserRadiusByEmail($email) {
-            $user = $this::sql("SELECT* FROM :table a inner join users_radius b on a.id = b.id_campania WHERE a.email = '$email'", Orm::FETCH_ONE);
+            $id_campania = BD_PARAMETERS['database']['id_campania'];
+            $user = $this::sql("SELECT* FROM :table a inner join users_radius b on a.id = b.id_cliente WHERE a.email = '$email' and b.id_campania = '$id_campania'", Orm::FETCH_ONE);
             if (isset($user)) {
                 $this->SetUserPassSession($user->username);
                 return true;
@@ -130,7 +132,7 @@
 
         /*Valida si el usuario se ha registrado*/
         public function ValidateExistClientByMac($mac = '') {
-            $user = $this::retrieveBymac_cliente($mac, Orm::FETCH_ONE);
+            $user = $this::retrieveBymac_cliente($mac, Orm::FETCH_ONE);        
             if(isset($user)) {
                 return true;
             } else  {
