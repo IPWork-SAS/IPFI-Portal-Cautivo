@@ -4,12 +4,12 @@
         user = "root"
         password = "IPwork2019."
         name = "portal_oxohotel"
-        campania = "Santa_Catalina_Eventos_2020_03_03"
-        id_locacion = "2"
-        id_campania = "5"
+        campania = "Santa_Catalina_Habitaciones_2020_03_03"
+        id_locacion = 2
+        id_campania = 4
 
 [radius]
-     url = "http://64.225.36.245"
+    url = "http://64.225.36.245"
     realm_id = 41
     profile_id = 24
     token = "521dc362-81a4-4a34-8a0b-052f03662c24"
