@@ -121,6 +121,17 @@
             }
         }
 
+        public function ValidateExistUserRadiusByMac($mac_cliente) {
+            $id_campania = BD_PARAMETERS['database']['id_campania'];
+            $user = $this::sql("SELECT* FROM :table a inner join users_radius b on a.id = b.id_cliente WHERE a.email = '$mac_cliente' and b.id_campania = '$id_campania'", Orm::FETCH_ONE);
+            if (isset($user)) {
+                $this->SetUserPassSession($user->username);
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         function SetUserPassSession($randomNumber) {
             if (session_status() == PHP_SESSION_NONE) {
                 session_start();

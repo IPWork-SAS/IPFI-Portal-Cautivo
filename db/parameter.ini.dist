@@ -4,9 +4,9 @@
         user = "root"
         password = "IPwork2019."
         name = "portal_oxohotel"
-        campania = "Santa_Catalina_Habitaciones_2020_03_03"
-        id_locacion = 2
-        id_campania = 4
+        campania = "Eventos_2020_03_03"
+        id_locacion = 1
+        id_campania = 3
 
 [radius]
     url = "http://64.225.36.245"
