@@ -15,7 +15,9 @@
             //Este es el id del perfil con el que se crea el usuario, el perfil es el tiempo de conexion establecido en este caso es 1G-1Day y su id es 15
             $profile_id     = $params['radius']['profile_id'];
             //Es el id del realm en el caso de IPFI se creo con el id 37
-            $realm_id       = $params['radius']['realm_id'];;
+            $realm_id       = $params['radius']['realm_id'];
+            //Id del usuario, este se coloca para que no genere errores el api
+            $user_id        = $params['radius']['user_id'];
             //Token obtenido en la tabla usuarios de base de datos del usuario root
             $token          = $params['radius']['token'];
 
@@ -31,6 +33,7 @@
             $postData = array(
                 'active'        => $active,
                 'cap_data'      => $cap_data,
+                'user_id'       => $user_id,
                 'language'      => $language,
                 'parent_id'     => $parent_id,
                 'profile_id'    => $profile_id,
@@ -75,7 +78,7 @@
             $utilidades = new Utilidades(); 
             $randomValue = $utilidades->GetRandomValue();
             $users_radius = new UsersRadius();
-            $user = $users_radius::retrieveByusername($randomValue, Orm::FETCH_ONE);
+            $user = $users_radius::retrieveByusername($randomValue, Orm::FETCH_ONE);    
             if (isset($user )) {
                 $this->CreateRandomUser();   
             } else {

@@ -1,0 +1,231 @@
+body::before {
+    z-index: -1;
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* IE Fallback */
+    background: rgba(0, 0, 0, 0.75);
+    width: 100%;
+    height: 100%;
+}
+
+.input-checkbox {
+    margin-bottom: 10px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.custom-control-label a {
+    color: black;
+}
+
+.logo {
+  align-content: center;
+}
+
+
+.input_error input {
+    background-color: rgba(80, 2, 2, 0.73);
+}
+
+.input_error input::placeholder {
+    color: #EEE;
+}
+
+.input_error select {
+    background-color: rgba(80, 2, 2, 0.73);
+    color: #EEE;
+}
+
+.input_error span {
+    font-size: 13px;
+}
+
+.container-error-span {
+    text-align: center;
+}
+  
+
+::-webkit-input-placeholder {
+  color: #fff;
+}
+::-moz-placeholder {
+  color: #fff;
+}
+:-ms-input-placeholder {
+  color: #fff;
+}
+::-ms-input-placeholder {
+  color: #fff;
+}
+::placeholder {
+  color: #fff;
+}
+ 
+.screen {
+  overflow: hidden;
+  width: 400px;
+  height: auto;
+  box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.4);
+  border-radius: 5px;
+  position: relative;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ 
+.screen .filter {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+  background: -webkit-gradient(linear, left top, right bottom, from(rgb(255, 255, 255)), to(rgb(52, 78, 151)));
+  background: linear-gradient(top left, rgb(255, 255, 255), rgb(52, 78, 151));
+  opacity: 0.5;
+}
+
+.screen .logo {
+  position: relative;
+  width: 350px;
+  margin-top: 50px;
+  padding-bottom: 5px;
+}
+
+.screen p.desc {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  font-size: 16px;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+}
+
+.screen .signInInfo {
+  position: relative;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.form-input{
+  box-sizing: border-box;
+  border: none;
+  margin-bottom: 5px;
+  width: 80%;
+  margin-left: 10%;
+  padding: 10px 0px 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.4);
+  background-color: rgb(31, 29, 27);;
+  color: #fff;
+  text-align: left;
+  outline: none;
+  opacity: 0.8;
+}
+
+.form-select {
+  box-sizing: border-box;
+  border: none;
+  margin-bottom: 5px;
+  width: 80%;
+  margin-left: 10%;
+  padding: 10px 0px 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.4);
+  background-color: rgb(31, 29, 27);;
+  color: #fff;
+  text-align: left;
+  outline: none;
+  opacity: 0.8;
+}
+
+.screen .button-container {
+  margin-top: 3%;
+  text-align: center;
+}
+
+.screen .button-container button {
+  padding: 10px;
+  margin-bottom: 10%;
+  width: 50%;  
+  border-radius: 500px;
+  background-color: #4c8ee8;
+  color: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.4);
+  border: none;
+  cursor: pointer;
+}
+
+.screen .button-container button:hover {
+  background-color: #317de4;
+}
+
+
+.custom-control-input {
+  position: fixed;
+  visibility: hidden;
+}
+
+.card {
+  align-items: center;
+}
+
+.icono-idioma span {
+  color: white;
+}
+
+.footer {
+  color: aliceblue;;
+}
+
+
+@media (max-width: 600px) {   
+  .screen {    
+    width: 100%;
+    height: auto;
+    margin-top: 30%;
+  }
+  .screen .logo {  
+    width: 80%; 
+    margin-top: 30px;
+  }
+
+  .screen p.desc {
+    font-size: 100%;
+  }
+
+  .screen .signInInfo {
+    margin-top: 0px;
+    font-size: 70%;
+  }
+
+  .screen .signInInfo form input { 
+    margin-bottom: 0px;
+    margin-left: 10%;
+    padding: 10px 0px 10px 10px;  
+  }
+
+  .screen .button-container button {
+    margin-bottom: 5%;
+  }
+
+  .footer {
+    font-size: 10px;
+  }
+
+  .input_error span {
+    font-size: 11px;
+}
+
+  .custom-control-label a {
+    font-size: 13px;  
+  } 
+}
+
+
+
+ 
+  

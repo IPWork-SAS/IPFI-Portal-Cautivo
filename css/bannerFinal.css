@@ -1,9 +1,24 @@
 
-.banner-img img {
-    width:100%;
-    border-radius: 5px;
-    max-height: 400px;
+@media (max-width: 750px) {
+    .banner-img img {
+        width:80%;
+        margin: 0 auto;
+        border-radius: 5px;
+        height: 200px;
+    }
 }
+@media (min-width: 760px) {
+    .banner-img img {
+        width:80%;
+        margin: 0 auto;
+        border-radius: 5px;
+        height: 300px;
+    }
+  }
+/* .banner-img img{
+    768
+} */
+
 
 .carrousel{ 
     border-radius: 10px;
@@ -33,6 +48,7 @@
 .slick-next {
     right: 2%;
 }
+
 
 /* CLASES QUE CAMBIAN  */
 

@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('#submit').click(function(e){
         e.preventDefault();
         submitButton = document.getElementById('submit');
-        //submitButton.disabled = true;
+        submitButton.disabled = true;
 
         dataForm = getDataForm();        
 
@@ -17,9 +17,9 @@ $(document).ready(function() {
             data: dataForm,
             success : function(data) {
                 if (data.code == "200"){
-                    window.location = data.url_conexion;
+                    window.location = '../vistas/banner.php';
                 } else {
-                    //submitButton.disabled = false;
+                    submitButton.disabled = false;
                     setErrorForm(data);
                 }
             },

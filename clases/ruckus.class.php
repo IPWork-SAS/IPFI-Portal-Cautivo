@@ -2,23 +2,21 @@
 
     class Ruckus {
         //Atributos
-        public $ip_nbi ;
-        public $zd_ip;
-        public $ip_ap;
-        public $mac_ap;
-        public $mac_cliente;
-        public $ip_cliente;
-        public $ssid;
-        public $sshTunnelStatus;
-        public $url;
-        public $proxy;
-        public $tecnologia;
+        private $ip_nbi ;
+        private $zd_ip;
+        private $ip_ap;
+        private $mac_ap;
+        private $ip_cliente;
+        private $ssid;
+        private $sshTunnelStatus;
+        private $url;
+        private $proxy;
+        private $tecnologia;
+        private $ruckusTechology;
         
-        public $dataValidation;
-        public $ruckusTechology;
+        public $dataValidation; 
+        public $mac_cliente;     
 
-        private $username = '';
-        private $password = '';
 
         function __construct() {              
         }
@@ -181,6 +179,70 @@
             $_SESSION['sshTunnelStatus'] = $this->sshTunnelStatus;
             $_SESSION['url'] = $this->url;
             $_SESSION['proxy'] = $this->proxy;
+        }
+
+        function GetUrlConnection() {
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }   
+
+            $tipo_tecnologia = $_SESSION['tipo_tecnologia']; 
+
+            switch ($tipo_tecnologia) {
+                case 'ZD':
+                    $port = '9997';
+                    $client_mac = $_SESSION['mac_cliente'];
+                    $uip = $_SESSION['ip_cliente'];                                    
+                    $url = 'http://'.$_SESSION['ip_ap'].':'.$port.'/login';
+                    $username = $_SESSION['username'];
+                    $password = $_SESSION['password'];
+                    
+                    $data = array(
+                        'uip'        => $uip ,
+                        'client_mac' => $client_mac,
+                        'username' => $username,
+                        'password' => $password
+                    );
+
+                    $post_data = array();
+                    foreach($data as $key=>$value) {
+                        $post_data[] = "$key=$value";
+                    }
+
+                    $datos = implode('&', $post_data);
+                    return $url.'?'.$datos;
+                    
+                case 'SZ':
+                    $port = '9997';
+                    $client_mac = $_SESSION['mac_cliente'];
+                    $uip = $_SESSION['ip_cliente'];
+                    $proxy = $_SESSION['proxy'];                    
+                    $url = 'http://'.$_SESSION['zd_ip'].':'.$port.'/SubscriberPortal/hotspotlogin'; 
+                    $username = $_SESSION['username'];
+                    $password = $_SESSION['password'];
+
+                    $data = array(
+                        'uip'        => $uip ,
+                        'client_mac' => $client_mac,
+                        'username' => $username,
+                        'password' => $password,
+                        'proxy' => $proxy
+                    );
+
+                    $post_data = array();
+                    foreach($data as $key=>$value) {
+                        $post_data[] = "$key=$value";
+                    }
+
+                    $datos = implode('&', $post_data);
+                    return $url.'?'.$datos;
+                    
+                default:
+                    return '';
+                    break;
+            }
+            
+            
         }
 
         function GetFormConnection() {

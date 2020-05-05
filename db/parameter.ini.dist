@@ -1,15 +1,9 @@
-[database]
-    host = "localhost"
-    port = ""
-    user = "root"
-    password = "IPwork2019."
-    name = "unicentro"
-    campania = "Coworking"
 
 [radius]
     url = "http://167.172.123.50"
     realm_id = 37
     profile_id = 15
+    user_id = 182
     token = "b4c6ac81-8c7c-4802-b50a-0a6380555b50"
 
 [radius_prod]

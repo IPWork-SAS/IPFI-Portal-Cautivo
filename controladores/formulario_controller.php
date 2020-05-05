@@ -4,7 +4,8 @@
     include_once "../db/voucher.class.php";
     include_once "../db/habitacion.class.php";
     include_once "../clases/formulario.class.php";
-    include_once "../clases/utilidades.class.php";   
+    include_once "../clases/utilidades.class.php";
+    include_once "../clases/conexion.class.php";   
 
      //Datos de que suministra el AP
     if (session_status() == PHP_SESSION_NONE) {
@@ -15,12 +16,17 @@
     include_once("../lang/{$lang}.php"); 
 
     $formulario = new Formulario($_REQUEST);
+    
     $datosFormulario = $formulario->GetDataForm();
 
-    
-    if (!$datosFormulario->errorFormulario) {        
+ 
+    if (!$datosFormulario->errorFormulario) {      
         if ($formulario->SaveDataForm()) {
-            echo json_encode(['code'=>200]);
+            $conexion = new Conexion();
+            echo json_encode(
+                ['code'=>200,
+                 'url_conexion'=>$conexion->BuildUrlConection()
+                ]);
             exit;
         } else {            
             //Pendiente Mensaje cuando no guarde los datos

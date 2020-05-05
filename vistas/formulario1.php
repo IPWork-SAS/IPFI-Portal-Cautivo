@@ -18,6 +18,8 @@
     } 
 
     include_once("../lang/{$lang}.php");
+
+    //Variable de seleccion de banner fotos = 1 y banner patrocinadores = 2
     
     $campania = new Campania();
     $datosCampania = $campania->GetDatosCampaña();  
@@ -29,6 +31,7 @@
     $termConditions = new TermsConditionsCampania();
     $terms = $termConditions->GetTermsConditionsCampania($id_campania);
     $bannerFilesCampania = new BannerFilesCampania(); 
+    $tipo_banner = $styles->type_banner; 
 ?>
 
 <!DOCTYPE html>
@@ -41,57 +44,75 @@
     <link rel="stylesheet" href="../vendor/flag-icon/flag-icon.css"> 
     <link rel="stylesheet" href="../vendor/flag-icon/flag-icon.min.css"> 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/formulario.css">
-    <link rel="stylesheet" href="../css/terminos_condiciones.css">
-    <link rel="stylesheet" href="../css/bannerInit.css">
-
-    <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../vendor/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="../vendor/slick/slick-theme.css"/>  
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/formulario1.css">
+    <link rel="stylesheet" href="../css/terminos_condiciones.css">
+    <?php if($tipo_banner == 1) { ?>
+        <link rel="stylesheet" href="../css/slider1.css"> 
+    <?php } if($tipo_banner == 2) { ?>
+        <link rel="stylesheet" href="../css/slider2.css">   
+    <?php } else{ 
+    ?>  
+    
+    <?php 
+        }
+
+    ?>    
+     
+    <link rel="stylesheet" href="../css/modal.css">
     
 </head>
 <style>
+    /* Imagen de Fondo */
     html {
         background-image: url(<?=$fileCampania->GetSRCBackgroundImage($id_campania)?>);
     }  
     
+    /* Tamaño Logo movil */
     .img-logo {
         width: <?=$styles->width_logo_movil?>;
-        margin: <?=$styles->margin_logo_movil?>;
     }
 
-    .title {
-        color: <?=$styles->color_title_portal?>  !important;
-    }
-
+    /* Tamaño Logo Web */ 
     @media (min-width: 992px) {
         .img-logo {
-            width: <?=$styles->width_logo_web?>;
-            margin: <?=$styles->margin_logo_web?>;
+            width: <?=$styles->width_logo_web?>;            
         }     
     }
 
+    /* Color del Titulo */ 
+    .title {
+        color: <?=$styles->color_title_portal?>  !important;
+    }
+   
+    /* Color del formulario */ 
     .formulario {    
         background: <?=$styles->container_form_color?>;
         color: <?=$styles->container_form_font_color?>;
     }
 
+    /* Color de Fondo Y Letra del Boton */ 
     .btn-conect {
         color: <?=$styles->button_font_color?>;
         background-color: <?=$styles->button_background_color?>;
         border-color: <?=$styles->button_border_color?>;
     }
 
+     /* Color de Fondo Y Letra del Boton on hover */ 
     .btn-conect:hover {
-        background-color: <?=$styles->button_hover_background_color?>;
-        color: <?=$styles->button_hover_font_color?>;
+        color: <?=$styles->button_font_color?>;
+        background-color: <?=$styles->button_background_color?>;
+        filter: brightness(0.8);
     }
-
-    .custom-control-input:checked~.custom-control-label::before {
-        border-color: <?=$styles->checkbox_terms_border_color?>;
-        background-color: <?=$styles->checkbox_terms_background_color?>;
-    }   
+    /* Color de los vinculos */ 
+    .custom-control-label a {
+        color: <?=$styles->container_form_font_color?>;
+    }
+    
+    
 </style>
 <body>
     <div class="selector-idioma">
@@ -106,47 +127,74 @@
                 <span>ES</span>
             </div>
         <?php } ?>
-       
     </div>
+    <?php 
+        if($styles->weather_widget == 1){
+    ?>
+        <div class="content-weather">
+            <div class="img-weather">
+                <div class="info-weather">
+                    <div id="temperatureGroup">
+                        <span id="wTemp"></span><span>&deg;C</span>
+                    </div>
+                    <div id="wSummary"></div>
+                    <!-- <div id="geoLoc"></div> -->
+                </div>
+            </div>
+        </div>
+    <?php
+        }else{
+
+        }
+    ?>
+    
+
+    <?php if($tipo_banner == 1) { ?>
+        <div id="modal-container">
+            <div class="modal-background">
+                <div class="slideshow" id='slideshow' >
+                    <?php
+                        foreach ($bannerFilesCampania->GetSRCBannerList($id_campania) as $key => $value) {                                   
+                            echo '
+                                <img src="'.$value->srcImgWeb.'" alt=""/>
+                            ';
+                        }
+                    ?>
+                </div>   
+            </div>
+        </div>
+    <?php } if($tipo_banner == 2) { ?>
+        <div id="modal-container">
+            <div class="modal-background">
+                <div class="slideshow" id='slideshow' >
+                    <?php
+                        foreach ($bannerFilesCampania->GetSRCBannerList($id_campania) as $key => $value) {                                   
+                            echo '
+                                <img src="'.$value->srcImgWeb.'" height="200" width="450" alt=""/>
+                            ';
+                        }
+                    ?>
+                </div> 
+            </div>
+        </div>
+    <?php } else { 
+    ?> 
+        
+    <?php
+        } 
+    ?>
 
     <div class="container">
         <div class="row h-100">
             <div class="col-sm-12 my-auto">
-
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <!-- <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div> -->
-                            <div class="modal-body">
-                                <div class="slider">
-                                    <div class="slide-track">
-
-                                    <?php
-                                        foreach ($bannerFilesCampania->GetSRCBannerList($id_campania) as $key => $value) {                                   
-                                            echo '
-                                                <div class="slide">
-                                                    <img src="'.$value->srcImgWeb.'" height="165" width="250" alt="" />
-                                                </div>
-                                            ';
-                                        }
-                                    ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="card"> 
                     <div class="logo">                        
                         <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC($id_campania)?>" alt="">
-                        <p class="title"><?=$styles->title_portal ? $styles->title_portal : $lang['titulo_form'];?></p>
                     </div>
                     <form class="formulario"  action="">
+                        <div class="titulo">
+                            <p class="title"><?=$styles->title_portal ? $styles->title_portal : $lang['titulo_form'];?></p>
+                        </div> 
                         <input type="hidden" name="os" id="os"> 
                         <input type="hidden" name="lang" id="lang" value="<?=$lang['lang']?>"> 
                         
@@ -161,7 +209,7 @@
                                     </div>
                                     <div class="form-group col-md-6" name="form_group_apellidos" id="form_group_apellidos">
                                         <input type="text" autocomplete="off" required onkeyup="dropInvalidCharactersApellidos();" class="form-control form-control-sm" id="apellidos" name="apellidos" onfocus="restaurarInputApellidos()" placeholder="'.$lang['apellidos_form'].'">
-                                        <span id="errorMSGApellidos"></span>
+                                         <span id="errorMSGApellidos"></span>
                                     </div>
                                 </div>
                                 ';
@@ -261,7 +309,7 @@
                         <div class="page-footer font-small">
                             <!-- Copyright -->
                             <div class="footer-copyright text-center py-3">
-                                Powered by <a href="https://ipwork.com.co/"> IPwork</a> (C) Copyright 2019
+                                Powered by <a href="https://ipwork.com.co/"> IPwork</a> (C) Copyright 2020
                             </div>
                             <!-- Copyright -->
                         </div>
@@ -291,11 +339,24 @@
         </div>
     </div>
  
-    <script src="../js/formulario.js"></script>
-    <script type="text/javascript" src="../vendor/jquery/jquery-3.2.1.min.js"></script> 
+    <script type="text/javascript" src="../vendor/jquery/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../vendor/slick/slick.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/sliderInit.js"></script>
-
+    <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/formulario.js"></script>
+    <script type="text/javascript" src="../js/modal.js"></script>
+    <?php 
+        if($styles->weather_widget == 1){
+    ?>
+        <script type="text/javascript" src="../js/weather.js"></script>
+    <?php
+        }else{
+            
+        }
+    ?>
+    <?php if($tipo_banner == 1) { ?>
+        <script src="../js/slider1.js"></script> 
+    <?php } else { ?>
+        <script src="../js/slider2.js"></script>
+    <?php } ?>  
 </body>
 </html>

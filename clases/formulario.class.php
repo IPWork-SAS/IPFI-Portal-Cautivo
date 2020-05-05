@@ -55,14 +55,16 @@
 
         function ExistUserRadius($dataClient) {
             $campania = new Campania();
-            if (array_key_exists('num_voucher', $dataClient)) {                
-                return $campania->ValidateExistUserRadiusByVoucher($dataClient['num_voucher']);
-            } else if (array_key_exists('email', $dataClient)) {
-                return $campania->ValidateExistUserRadiusByEmail($dataClient['email']);
-            } 
-            else {
-                return false;
-            }
+            //Hack para cuando el voucher es unico entonces se valida por mac y no por voucher o email
+            return $campania->ValidateExistUserRadiusByMac($dataClient['mac_cliente']);
+            // if (array_key_exists('num_voucher', $dataClient)) {                
+            //     return $campania->ValidateExistUserRadiusByVoucher($dataClient['num_voucher']);
+            // } else if (array_key_exists('email', $dataClient)) {
+            //     return $campania->ValidateExistUserRadiusByEmail($dataClient['email']);
+            // } 
+            // else {
+            //     return false;
+            // }
         }
         
         function GetDataCLient() {
@@ -242,7 +244,7 @@
                 $this->dataFormulario['errorVoucher'] = true;
                 $this->dataFormulario['errorFormulario'] = true;
             } else {
-                if ( !$voucher->validateExistVoucher($num_voucher, $campania->GetIdCampania())) {
+                if (!$voucher->validateExistVoucher($num_voucher, $campania->GetIdCampania())) {
                     $this->dataFormulario['errorMSGVoucher'] =  'error_voucher_existencia';
                     $this->dataFormulario['errorVoucher'] = true;
                     $this->dataFormulario['errorFormulario'] = true;

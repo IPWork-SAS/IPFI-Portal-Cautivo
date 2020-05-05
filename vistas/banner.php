@@ -53,7 +53,7 @@
      <link rel="stylesheet" type="text/css" href="../vendor/slick/slick-theme.css"/>  
 
      <link rel="stylesheet" href="../css/style.css">
-     <link rel="stylesheet" href="../css/banner.css">
+     <link rel="stylesheet" href="../css/bannerFinal.css">
      <link rel="stylesheet" href="../css/terminos_condiciones.css">
      
     <script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -74,6 +74,7 @@
         color: <?=$styles->color_title_portal?> !important;
     }
 
+
     @media (min-width: 992px) {
         .img-logo {
             width: <?=$styles->width_logo_web?>;
@@ -93,8 +94,9 @@
     }
 
     .btn-conect:hover {
-        background-color: <?=$styles->button_hover_background_color?>;
-        color: <?=$styles->button_hover_font_color?>;
+        color: <?=$styles->button_font_color?>;
+        background-color: <?=$styles->button_background_color?>;
+        filter: brightness(0.8);
     }
 
     .btn-conectar {       
@@ -105,9 +107,68 @@
 
     .btn-conectar:hover,
     .btn-conectar:focus {
-        background-color: <?=$styles->button_hover_background_color?>;
-        color: <?=$styles->button_hover_font_color?>;
+        color: <?=$styles->button_font_color?>;
+        background-color: <?=$styles->button_background_color?>;
+        filter: brightness(0.8);
     }
+
+    <?php
+    if($styles->static_form == 1 && $styles->type_form == 2){
+    ?>
+        .btn-conect {
+            color: #fff!important;
+            background-color: #44c4e7!important;
+            border-color: #44c4e7!important;
+        }
+
+        .btn-conect:hover {
+            color: #fff!important;
+            background-color: #44c4e7!important;
+            filter: brightness(0.8)!important;
+        }
+
+        .btn-conectar {       
+            color: #fff!important;
+            background-color: #44c4e7!important;
+            border-color: #44c4e7!important;
+        }
+
+        .btn-conectar:hover,
+        .btn-conectar:focus {
+            color: #fff!important;
+            background-color: #44c4e7!important;
+            filter: brightness(0.8)!important;
+        }
+    <?php
+        }if($styles->static_form == 1 && $styles->type_form == 3){
+    ?>
+    .btn-conect {
+            color: #fff!important;
+            background-color: #4c8ee8!important;
+            border-color: #4c8ee8!important;
+        }
+
+        .btn-conect:hover {
+            color: #fff!important;
+            background-color: #4c8ee8!important;
+            filter: brightness(0.8)!important;
+        }
+
+        .btn-conectar {       
+            color: #fff!important;
+            background-color: #4c8ee8!important;
+            border-color: #4c8ee8!important;
+        }
+
+        .btn-conectar:hover,
+        .btn-conectar:focus {
+            color: #fff!important;
+            background-color: #4c8ee8!important;
+            filter: brightness(0.8)!important;
+        }
+    <?php      
+        }
+    ?>
 
     .custom-control-input:checked~.custom-control-label::before {
         border-color: <?=$styles->checkbox_terms_border_color?>;
@@ -137,28 +198,34 @@
                         <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC($id_campania)?>" alt="">
                         <p class="title"><?=$styles->title_portal ? $styles->title_portal : $lang['titulo_form'];?></p>
                     </div>
-                    <div class="container-carrusel">
-                        <div class="slider carrousel">
-                            <?php
-                                foreach ($bannerFilesCampania->GetSRCBannerList($id_campania) as $key => $value) {                                   
-                                    echo '
-                                        <div class="banner-img">
-                                            <picture>
-                                                <source srcset="'.$value->srcImgWeb.'" media="(min-width: 800px)" />                                
-                                                <img src="'.$value->srcImgMovil.'" />
-                                            </picture>                                            
-                                        </div>
-                                    ';
-                                }
-                            ?>
-                        </div>
-                    </div>
+                    <?php
+                        if($styles->type_banner != 0){
 
+                    ?> 
+                        <div class="container-carrusel">
+                            <div class="slider carrousel">
+                                <?php
+                                    foreach ($bannerFilesCampania->GetSRCBannerList($id_campania) as $key => $value) {                                   
+                                        echo '
+                                            <div class="banner-img">
+                                                <picture>
+                                                    <source srcset="'.$value->srcImgWeb.'" media="(min-width: 800px)" />                                
+                                                    <img src="'.$value->srcImgMovil.'" />
+                                                </picture>                                            
+                                            </div>
+                                        ';
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    <?php
+                        }
+                    ?>
                     
                     <?php 
                         echo '
-                            <form class="field-btn-conectar "'.$conexion->form_connection.'
-                                <button class="btn btn-conectar" type="submit">'.$lang['bienvenido_usuario'].'</button>
+                            <form class="field-btn-conectar "'.$conexion->BuildFormConnection().'
+                                <button class="btn btn-conectar" id="btnBanner" type="submit">Estableciendo conexión a internet en 5</button>
                             </form>
                         ';
                    ?>
