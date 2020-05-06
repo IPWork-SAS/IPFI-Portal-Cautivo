@@ -113,6 +113,10 @@
         color: <?=$styles->button_hover_font_color?>;
     }
 
+    .content-weather {
+        color: white;       
+    }  
+
     /*-------------*/
 
     <?php

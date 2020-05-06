@@ -108,6 +108,10 @@
         color:  #000;
     }
 
+    .content-weather {
+        color: white;       
+    }  
+
     /* Nuevos estilos formulario 2 desde BD */
 
    
