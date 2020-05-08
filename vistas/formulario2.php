@@ -32,6 +32,7 @@
     $terms = $termConditions->GetTermsConditionsCampania($id_campania);
     $bannerFilesCampania = new BannerFilesCampania(); 
     $tipo_banner = $styles->type_banner; 
+    $datosLocacion = $campania->GetInfoLocation();
 ?>
 
 <!DOCTYPE html>
@@ -419,10 +420,15 @@
     <script type="text/javascript" src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../js/formulario.js"></script>
     <script type="text/javascript" src="../js/modal.js"></script>
+    <script type="text/javascript" src="../js/weather.js"></script>
     <?php 
         if($styles->weather_widget == 1){
     ?>
-        <script type="text/javascript" src="../js/weather.js"></script>
+        <script type="text/javascript">
+            var latitud = <?= $datosLocacion->latitud ?>;
+            var longitud = <?= $datosLocacion->longitud ?>;
+            getPosSuccess(latitud, longitud);
+        </script>
     <?php
         }else{
             
