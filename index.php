@@ -5,9 +5,11 @@
     include_once('./clases/utilidades.class.php');
 
     if (session_status() == PHP_SESSION_NONE) {
-        session_destroy();
         session_start();
-    }
+    } 
+
+    session_destroy();
+
     
     $utilidades = new Utilidades();
     $utilidades->DetectLanguage();

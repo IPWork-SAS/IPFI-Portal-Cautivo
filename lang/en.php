@@ -27,7 +27,7 @@
         "terminos_link" => "Accept Terms and Conditions",
         "btn_continuar" => "Continue",
         "titulo_banner" => "Connect and enjoy our WIFI network.",
-        "btn_conectar" => "Conect",
+        "btn_conectar" => "Connect",
         "bienvenido_usuario" => "Welcome ",
         //Errores
         "error_default" => "Ops! Something went wrong. Contact the network administrator - Error 1",

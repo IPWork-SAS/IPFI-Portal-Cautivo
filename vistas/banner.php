@@ -42,7 +42,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?=$lang['titulo_website']?></title>   
+    <title><?=$styles->title_portal ? $styles->title_portal : $lang['titulo_form'];?></title>   
     <link rel="stylesheet" href="../vendor/flag-icon/flag-icon.css"> 
     <link rel="stylesheet" href="../vendor/flag-icon/flag-icon.min.css"> 
     <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
@@ -68,6 +68,10 @@
     .img-logo {
         width: <?=$styles->width_logo_movil?>;
         margin: <?=$styles->margin_logo_movil?>;
+    }
+
+    .title {
+        color: <?=$styles->color_title_portal?> !important;
     }
 
 
@@ -132,7 +136,7 @@
                 <div class="card"> 
                     <div class="logo">
                         <img class="img-logo" src="<?=$fileCampania->GetSRCIconImageSRC($id_campania)?>" alt="">
-                        <p><?=$lang['bienvenido_usuario'].$nombre.'!'?></p>
+                        <p class="title"><?=$styles->title_portal ? $styles->title_portal : $lang['titulo_form'];?></p>
                     </div>
                     <div class="container-carrusel">
                         <div class="slider carrousel">
@@ -155,7 +159,7 @@
                     <?php 
                         echo '
                             <form class="field-btn-conectar "'.$conexion->form_connection.'
-                                <button class="btn btn-conectar" type="submit">'.$lang['bienvenido_usuario'].'</button>
+                                <button class="btn btn-conectar" type="submit">'.$lang['btn_conectar'].'</button>
                             </form>
                         ';
                    ?>
