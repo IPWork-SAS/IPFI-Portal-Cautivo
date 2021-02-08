@@ -15,9 +15,17 @@
         $lang = $_SESSION["i"]; 
     } 
 
+    $campania = new Campania();
+
+    if(isset($_SESSION['mac_cliente'])) {        
+       if ($campania->ValidateExistClientByMac($_SESSION['mac_cliente'])) {
+            header('Location: banner.php');
+       }
+    } 
+
     include_once("../lang/{$lang}.php");
     
-    $campania = new Campania();
+    
     $datosCampania = $campania->GetDatosCampaña();  
     $id_campania = $campania->GetIdCampania();
     
@@ -56,7 +64,11 @@
     }
 
     .title {
+<<<<<<< HEAD
         color: <?=$styles->color_title_portal?>  !important;
+=======
+        color: <?=$styles->color_title_portal?> !important;
+>>>>>>> 6729c67a4d2e1aa7d26aececb3ca353cb40946e8
     }
 
     @media (min-width: 992px) {

@@ -73,7 +73,10 @@
     .title {
         color: <?=$styles->color_title_portal?> !important;
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6729c67a4d2e1aa7d26aececb3ca353cb40946e8
 
     @media (min-width: 992px) {
         .img-logo {
