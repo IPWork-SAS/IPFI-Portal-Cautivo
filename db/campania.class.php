@@ -81,11 +81,7 @@
             if(!empty($dataClient['ssid'])) {
                 $this->ssid = $dataClient['ssid'];
             }
-<<<<<<< HEAD
             if(!empty($dataClient['razon_visita'])) {
-=======
-            if(isset($dataClient['razon_visita'])) {
->>>>>>> 6729c67a4d2e1aa7d26aececb3ca353cb40946e8
                 $this->razon_visita = $dataClient['razon_visita'];
             }
 

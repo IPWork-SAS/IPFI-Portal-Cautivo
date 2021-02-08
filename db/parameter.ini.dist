@@ -2,7 +2,7 @@
         host = "localhost"
         port = ""
         user = "root"
-        password = "IPwork2019."
+        password = ""
         name = "portal_oxohotel"
         campania = "Ermita"
         id_locacion = 1
